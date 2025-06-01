@@ -1,0 +1,108 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>AI Interviewer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% tailwind_css %}
+</head>
+<body class="bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 min-h-screen flex items-center justify-center font-sans">
+    <div id="form-container" class="backdrop-blur-lg bg-white/30 border border-white/20 shadow-xl rounded-2xl p-8 w-full max-w-md transition duration-300 ease-in-out">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">Upload Resume for AI Interview</h2>
+        <form id="resume-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- <label class="block text-gray-700">Job Title:</label>
+            <input type="text" name="job_title" id="job_title" required class="w-full p-2 border rounded mb-2">
+             -->
+            <label class="block text-gray-700 font-semibold mb-1">Job Title</label>
+            <input type="text" name="job_title" id="job_title" placeholder="Fill job title here"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white/70 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-500" required />
+
+            <!-- <label class="block text-gray-700">Job Description:</label>
+            <textarea name="job_description" id="job_description" required class="w-full p-2 border rounded mb-2"></textarea> -->
+
+
+            <label class="block text-gray-700 font-semibold mb-1">Job Description</label>
+            <textarea  name="job_description" id="job_description" placeholder="Paste job description here"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white/70 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-500" required></textarea>
+
+            
+            <label class="block text-gray-700">Upload Resume</label>
+            <input type="file" name="resume" id="resume" required class="w-full p-2 border rounded mb-2">
+
+
+
+            
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded w-full mt-3 hover:scale-95 hover:shadow-lg">Start Interview</button>
+        </form>
+    </div>
+
+    <!-- Loader -->
+    <div id="loader" class="hidden text-center">
+        <p class="text-xl font-semibold">Setting up interview environment...</p>
+    </div>
+
+    <script>
+        document.getElementById("resume-form").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            // Hide form and show loader
+            document.getElementById("form-container").classList.add("hidden");
+            document.getElementById("loader").classList.remove("hidden");
+
+            const formData = new FormData(this);
+            try{
+
+            
+
+            const response = await fetch("{% url 'upload_resume' %}", {
+                method: "POST",
+                body: formData
+            });
+
+            const data = await response.json();
+            if (data.session_id) {
+                let sessionId = data.session_id;
+                
+                // Store session_id in localStorage to use in another file
+                localStorage.setItem("session_id", sessionId);
+                localStorage.setItem("job_title", formData.get("job_title"));
+                localStorage.setItem("job_description", formData.get("job_description"));
+                localStorage.setItem("resume_text", data.resume_text); // Store resume text for later use
+
+
+
+                window.location.href = `/interview/${data.session_id}/`;
+            } else {
+                alert("Error setting up the interview.");
+                document.getElementById("form-container").classList.remove("hidden");
+                document.getElementById("loader").classList.add("hidden");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+
+            alert("Error setting up the interview.");
+            document.getElementById("form-container").classList.remove("hidden");
+            document.getElementById("loader").classList.add("hidden");
+        }
+        });
+    </script>
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+          const file = event.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+              const img = document.getElementById('previewImg');
+              img.src = e.target.result;
+              img.classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+    
+            document.getElementById('title').value = file.name.split('.').slice(0, -1).join('.');
+            document.getElementById('fileName').textContent = `Selected: ${file.name}`;
+          }
+        });
+      </script>
+</body>
+</html>

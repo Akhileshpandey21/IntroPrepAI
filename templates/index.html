@@ -1,0 +1,130 @@
+{% extends "base.html" %} 
+{% load i18n %}
+{% block title %}Home{% endblock title %} 
+{% block profileImage %}
+{% if latest_image %}
+<img
+  src="{{ latest_image.image.url }}"
+  alt="{{ latest_image.title }}"
+  class="mt-2 w-10 h-10 object-cover rounded-full"
+/>
+{% else %}
+<p class="text-center text-gray-500">
+  No images uploaded yet.
+</p>
+{% endif %}
+{% endblock profileImage %}
+
+
+{% block profileMobileImage %}
+{% if latest_image %}
+<img
+  src="{{ latest_image.image.url }}"
+  alt="{{ latest_image.title }}"
+  class="mt-2 w-10 h-10 object-cover rounded-full shadow-md"
+/>
+{% else %}
+<p class="text-center text-gray-500">
+  No images uploaded yet.
+</p>
+{% endif %}
+
+{% endblock profileMobileImage %}
+
+{% block body %}
+<section class="bg-gray-50 py-16 px-6 container" id="testimonials">
+  <div class="max-w-7xl mx-auto text-center mb-12">
+    <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900">What Our Users Say</h2>
+    <p class="text-gray-600 mt-2">Real experiences from real learners using InterviewPrepAI.</p>
+  </div>
+
+  <div class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
+    {% for review in reviews %}
+    <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition">
+      <div class="flex items-center gap-4 mb-4">
+        <img src="https://randomuser.me/api/portraits/men/{{ forloop.counter|add:20|stringformat:'d' }}.jpg"
+             alt="{{ review.name }}"
+             class="w-14 h-14 rounded-full object-cover">
+        <div>
+          <h4 class="font-semibold text-lg">{{ review.name }}</h4>
+          <p class="text-sm text-gray-500">{{ review.role|default:"Learner" }}</p>
+        </div>
+      </div>
+      <p class="text-gray-700 mb-2">"{{ review.text }}"</p>
+      <!-- Star Rating -->
+      <div class="flex text-yellow-400 space-x-1">
+        {% for i in "12345" %}
+          {% if forloop.counter <= review.rating %}
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.386 2.46a1 1 0 00-.364 1.118l1.287 3.974c.3.921-.755 1.688-1.54 1.118l-3.386-2.46a1 1 0 00-1.176 0l-3.386 2.46c-.784.57-1.838-.197-1.539-1.118l1.286-3.974a1 1 0 00-.364-1.118L2.044 9.401c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.974z" />
+          </svg>
+          {% else %}
+          <svg class="w-5 h-5 fill-current opacity-30" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.386 2.46a1 1 0 00-.364 1.118l1.287 3.974c.3.921-.755 1.688-1.54 1.118l-3.386-2.46a1 1 0 00-1.176 0l-3.386 2.46c-.784.57-1.838-.197-1.539-1.118l1.286-3.974a1 1 0 00-.364-1.118L2.044 9.401c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.974z" />
+          </svg>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Write a Review Button -->
+  <div class="mt-12 text-center">
+    <button onclick="toggleReviewForm()"
+            class="bg-yellow-500 text-white px-6 py-3 rounded-md hover:bg-yellow-600 transition">
+      ✍️ Write a Review
+    </button>
+  </div>
+
+  <!-- Hidden Review Form -->
+  <div id="reviewForm" class="hidden transition duration-300 ease-in-out max-w-3xl mx-auto mt-8 bg-yellow-50 p-8 rounded-xl shadow-md text-left">
+    <h3 class="text-2xl font-bold mb-6 text-center">Leave Your Review</h3>
+    <form method="POST" action="{% url 'submit_review' %}" class="space-y-4">
+      {% csrf_token %}
+      <div>
+        <label class="block font-medium mb-1">Full Name</label>
+        <input type="text" name="name" required class="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+      </div>
+      <div>
+        <label class="block font-medium mb-1">Role / Occupation (optional)</label>
+        <input type="text" name="role" class="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+      </div>
+      <div>
+        <label class="block font-medium mb-1">Rating</label>
+        <select name="rating" required class="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+          <option value="">Select Stars</option>
+          <option value="5">★★★★★</option>
+          <option value="4">★★★★☆</option>
+          <option value="3">★★★☆☆</option>
+          <option value="2">★★☆☆☆</option>
+          <option value="1">★☆☆☆☆</option>
+        </select>
+      </div>
+      <div>
+        <label class="block font-medium mb-1">Testimonial</label>
+        <textarea name="text" rows="4" required placeholder="Your experience..." class="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
+      </div>
+      <button type="submit" class="bg-yellow-500 text-white font-semibold py-2 px-6 rounded-md hover:bg-yellow-600 transition w-full">
+        Submit Review
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- Toggle & Auto-hide Script -->
+<script>
+  function toggleReviewForm() {
+    document.getElementById("reviewForm").classList.toggle("hidden");
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("reviewed") === "true") {
+      document.getElementById("testimonials")?.scrollIntoView({ behavior: "smooth" });
+      const form = document.getElementById("reviewForm");
+      if (form) setTimeout(() => form.classList.add("hidden"), 1000);
+    }
+  });
+</script>
+{% endblock body %}

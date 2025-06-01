@@ -1,0 +1,185 @@
+{% load static tailwind_tags %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signup</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  {% tailwind_css %}
+  <style>
+    .glass {
+      backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    /* From Uiverse.io by andrew-demchenk0 */ 
+    .cube-loader {
+      position: relative;
+    /* u can choose any size */
+      width: 80px;
+      height: 80px;
+      transform-style: preserve-3d;
+      transform: rotateX(-30deg);
+      animation: animate 4s linear infinite;
+    }
+    
+    @keyframes animate {
+      0% {
+        transform: rotateX(-30deg) rotateY(0);
+      }
+    
+      100% {
+        transform: rotateX(-30deg) rotateY(360deg);
+      }
+    }
+    
+    .cube-loader .cube-wrapper {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      /* top: 0;
+      left: 0; */
+      transform-style: preserve-3d;
+    }
+    
+    .cube-loader .cube-wrapper .cube-span {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      /* top: 0;
+      left: 0; */
+                                         /* width 75px / 2 = 37.5px */
+      transform: rotateY(calc(90deg * var(--i))) translateZ(37.5px);
+      background: linear-gradient(
+        to bottom,
+        hsl(330, 3.13%, 25.1%) 0%,
+        hsl(177.27, 21.71%, 32.06%) 5.5%,
+        hsl(176.67, 34.1%, 36.88%) 12.1%,
+        hsl(176.61, 42.28%, 40.7%) 19.6%,
+        hsl(176.63, 48.32%, 43.88%) 27.9%,
+        hsl(176.66, 53.07%, 46.58%) 36.6%,
+        hsl(176.7, 56.94%, 48.91%) 45.6%,
+        hsl(176.74, 62.39%, 50.91%) 54.6%,
+        hsl(176.77, 69.86%, 52.62%) 63.4%,
+        hsl(176.8, 76.78%, 54.08%) 71.7%,
+        hsl(176.83, 83.02%, 55.29%) 79.4%,
+        hsl(176.85, 88.44%, 56.28%) 86.2%,
+        hsl(176.86, 92.9%, 57.04%) 91.9%,
+        hsl(176.88, 96.24%, 57.59%) 96.3%,
+        hsl(176.88, 98.34%, 57.93%) 99%,
+        hsl(176.89, 99.07%, 58.04%) 100%
+      );
+    }
+    
+    .cube-top {
+      position: absolute;
+      width: 75px;
+      height: 75px;
+      background: hsl(330, 3.13%, 25.1%) 0%;
+                          /* width 75px / 2 = 37.5px */
+      transform: rotateX(90deg) translateZ(37.5px);
+      transform-style: preserve-3d;
+    }
+    
+    .cube-top::before {
+      content: '';
+      position: absolute;
+    /* u can choose any size */
+      width: 75px;
+      height: 75px;
+      background: hsl(176.61, 42.28%, 40.7%) 19.6%;
+      transform: translateZ(-90px);
+      filter: blur(10px);
+      box-shadow: 0 0 10px #323232,
+                  0 0 20px hsl(176.61, 42.28%, 40.7%) 19.6%,
+                  0 0 30px #323232,
+                  0 0 40px hsl(176.61, 42.28%, 40.7%) 19.6%;
+    }
+    
+
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-800 via-indigo-900 to-indigo-800 text-white px-4">
+
+  <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    
+    <!-- Left Info Section -->
+    <div class="text-left space-y-6 hidden md:block ">
+        <h1 class="text-5xl font-bold leading-tight">Welcome!</h1>
+        <p class="text-lg text-gray-200">Join us today to experience modern web design and functionality like never before.</p>
+      
+        <!-- From Uiverse.io by andrew-demchenk0 --> 
+<div class="cube-loader">
+    <div class="cube-top"></div>
+    <div class="cube-wrapper">
+      <span style="--i:0" class="cube-span"></span>
+      <span style="--i:1" class="cube-span"></span>
+      <span style="--i:2" class="cube-span"></span>
+      <span style="--i:3" class="cube-span"></span>
+    </div>
+  </div>
+    </div>
+
+    <!-- Signup Card -->
+    <div class="glass p-8 md:p-10 rounded-2xl shadow-lg w-full">
+      <h2 class="text-3xl font-bold text-center text-white mb-6">Create an Account</h2>
+
+      <!-- Error Messages -->
+      {% if messages %}
+        <div class="mb-4">
+          {% for message in messages %}
+            <p class="text-red-400 text-sm text-center">{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <!-- Signup Form -->
+      <form method="post" class="space-y-5">
+        {% csrf_token %}
+
+        <div>
+          <label class="block text-sm mb-1 text-white">Username:</label>
+          <input type="text" name="username" required
+            class="w-full px-4 py-2 bg-white bg-opacity-10 border border-white border-opacity-30 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 placeholder-gray-300"
+            placeholder="Your username">
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1 text-white">Email:</label>
+          <input type="email" name="email" required
+            class="w-full px-4 py-2 bg-white bg-opacity-10 border border-white border-opacity-30 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 placeholder-gray-300"
+            placeholder="you@example.com">
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1 text-white">Password:</label>
+          <input type="password" name="password" required
+            class="w-full px-4 py-2 bg-white bg-opacity-10 border border-white border-opacity-30 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 placeholder-gray-300"
+            placeholder="Enter password">
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1 text-white">Confirm Password:</label>
+          <input type="password" name="confirm_password" required
+            class="w-full px-4 py-2 bg-white bg-opacity-10 border border-white border-opacity-30 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 placeholder-gray-300"
+            placeholder="Confirm password">
+        </div>
+
+        <button type="submit"
+          class="w-full py-2 bg-gradient-to-r from-orange-400 to-pink-500 text-white font-semibold rounded-lg hover:from-orange-500 hover:to-pink-600 transition">
+          Signup
+        </button>
+      </form>
+
+      <!-- Login Link -->
+      <p class="text-center text-gray-200 mt-6">
+        Already have an account?
+        <a href="{% url 'login' %}" class="text-pink-400 hover:underline">Login</a>
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!-- video_interview.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Interviewer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white h-screen flex flex-col justify-center items-center">
+
+  <div class="bg-white text-black rounded-lg shadow-lg w-full max-w-2xl p-6 space-y-4">
+    <div class="flex justify-between items-center">
+      <h2 class="text-xl font-bold">🎥 AI Video Interview</h2>
+      <button id="start-btn" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
+        Start Interview
+      </button>
+      <a href="/download_feedback_pdf/" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded-lg">
+        📥 Download Feedback
+      </a>
+      
+    </div>
+
+    <video id="user-video" autoplay playsinline muted class="rounded border-4 border-yellow-500 w-full h-64 object-cover"></video>
+    <p id="mic-status" class="text-sm text-green-400 italic"></p>
+
+
+    <div id="question-box" class="text-lg font-semibold text-blue-700"></div>
+    <div id="answer-box" class="text-md text-gray-800"></div>
+    <div id="feedback-box" class="text-sm text-green-600 mt-2"></div>
+  </div>
+
+  <script>
+    const video = document.getElementById("user-video");
+    const startBtn = document.getElementById("start-btn");
+    const questionBox = document.getElementById("question-box");
+    const answerBox = document.getElementById("answer-box");
+    const feedbackBox = document.getElementById("feedback-box");
+    
+    const question = "Tell me about yourself.";
+    
+    async function startInterview() {
+      await startWebcam();
+      speak(question);
+      questionBox.innerText = `👨‍💻 AI: ${question}`;
+    
+      const answer = await listenToVoice();
+      answerBox.innerText = `🧑 You: ${answer}`;
+    
+      const res = await fetch("/analyze_answer/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ answer })
+      });
+    
+      const data = await res.json();
+      feedbackBox.innerText = `🧠 Emotion: ${data.emotion}, 😊 Sentiment: ${data.sentiment}, 🪑 Posture: ${data.posture}`;
+      speak("Thanks! Your response was noted.");
+    }
+    
+    async function startWebcam() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = stream;
+      } catch (err) {
+        alert("Webcam access denied");
+        console.error(err);
+      }
+    }
+    
+    function speak(text) {
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = "en-US";
+      window.speechSynthesis.speak(utter);
+    }
+    
+    async function listenToVoice() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        alert("Speech recognition is not supported in this browser.");
+        return "";
+      }
+    
+      return new Promise((resolve, reject) => {
+        const recognition = new SpeechRecognition();
+        recognition.lang = "en-US";
+        recognition.interimResults = false;
+        recognition.continuous = false;
+    
+        recognition.onstart = () => {
+          document.getElementById("mic-status").innerText = "🎤 Listening...";
+        };
+    
+        recognition.onresult = (event) => {
+          const transcript = event.results[0][0].transcript;
+          document.getElementById("mic-status").innerText = `✅ Heard: "${transcript}"`;
+          resolve(transcript);
+        };
+    
+        recognition.onerror = (event) => {
+          console.error("Speech recognition error:", event.error);
+          
+          // Specific handling for "aborted" error
+          if (event.error === "aborted") {
+            document.getElementById("mic-status").innerText = "❌ Speech recognition aborted. Please try again.";
+          }
+    
+          // Specific handling for "no-speech" error
+          if (event.error === "no-speech") {
+            document.getElementById("mic-status").innerText = "❌ No speech detected. Please speak louder or try again.";
+          }
+    
+          reject(event.error);
+        };
+    
+        recognition.onend = () => {
+          console.log("Stopped listening.");
+        };
+    
+        // Start recognition
+        recognition.start();
+      });
+    }
+    
+    
+    
+    
+    startBtn.addEventListener("click", async () => {
+  try {
+    startInterview();
+    console.log("Interview started");
+    const spokenText = await listenToVoice();
+    console.log("Answer received:", spokenText);
+    answerBox.innerText = `🧑 You: ${spokenText}`;
+    feedbackBox.innerText = "Processing your answer...";
+   speak(spokenText); // Optional: Speak the answer back to the user
+    // send to backend or process
+  } catch (err) {
+    console.error("Voice failed:", err);
+  }
+});
+
+
+
+  </script>
+  
+</body>
+</html>

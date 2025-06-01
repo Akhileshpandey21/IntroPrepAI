@@ -1,0 +1,115 @@
+{% load static tailwind_tags %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    {% comment %} <script src="https://cdn.tailwindcss.com"></script> {% endcomment %}
+    {% tailwind_css %}
+  </head>
+  <body class="bg-gray-100 dark:bg-gray-900 dark:text-gray-50 text-gray-900">
+    <!-- Sidebar & Main Content Wrapper -->
+    <div class="flex min-h-screen">
+      <!-- Sidebar -->
+      <aside
+        id="sidebar"
+        class="w-64 bg-gray-900  text-white flex flex-col fixed md:relative inset-y-0 left-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out"
+      >
+        <div class="p-4 text-xl font-bold flex justify-between">
+          Dashboard
+          <button id="close-sidebar" class="md:hidden text-gray-300 text-2xl">
+            &times;
+          </button>
+        </div>
+
+        <div class="flex items-center space-x-3 p-4 border-b border-gray-700">
+          {% comment %}
+          <img
+            src="/static/images/404.svg"
+            alt="User Avatar"
+            class="w-10 h-10 rounded-full object-cover"
+          />
+          {% endcomment %} 
+          {% if latest_image %}
+          <img
+            src="{{ latest_image.image.url }}"
+            alt="{{ latest_image.title }}"
+            class="mt-2 w-10 h-10 object-cover rounded-full"
+          />
+        {% else %}
+          <p class="text-center text-gray-500">
+            No images uploaded yet.
+          </p>
+        {% endif %}
+        
+         
+
+          <span class="text-lg font-semibold">
+            {{ request.user.username|title }}</span
+          >
+        </div>
+        <nav class="flex-1">
+          <a href="/" class="block py-3 px-4 hover:bg-gray-700">🏠 Home</a>
+          <a href="/upload" class="block py-3 px-4 hover:bg-gray-700">👨‍🏫 Profile Image</a>
+          <a href="#" class="block py-3 px-4 hover:bg-gray-700">📊 Analytics</a>
+          <a href="#" class="block py-3 px-4 hover:bg-gray-700">⚙️ Settings</a>
+        </nav>
+        <div class="p-4 border-t border-gray-700">
+          <a
+            href="{% url 'logout' %}"
+            class="block text-sm text-gray-300 hover:text-white"
+            >Logout</a
+          >
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex-1 p-6 ml-0   transition-all duration-300">
+        <button
+          id="open-sidebar"
+          class="md:hidden bg-gray-900 text-white p-2 rounded mb-4 w-full text-center"
+        >
+          ☰ Menu
+        </button>
+        <h1 class="text-3xl font-bold text-gray-800">Welcome to Dashboard</h1>
+        <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <div class="bg-white p-4 shadow rounded-lg">
+            <h2 class="text-lg font-semibold">Users</h2>
+            <p class="text-2xl font-bold">1,234</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-white p-4 shadow rounded-lg">
+            <h2 class="text-lg font-semibold">Sales</h2>
+            <p class="text-2xl font-bold">$12,345</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-white p-4 shadow rounded-lg">
+            <h2 class="text-lg font-semibold">Orders</h2>
+            <p class="text-2xl font-bold">567</p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- JavaScript for Sidebar Toggle -->
+    <script>
+      document
+        .getElementById("open-sidebar")
+        .addEventListener("click", function () {
+          document
+            .getElementById("sidebar")
+            .classList.remove("-translate-x-full");
+        });
+      document
+        .getElementById("close-sidebar")
+        .addEventListener("click", function () {
+          document.getElementById("sidebar").classList.add("-translate-x-full");
+        });
+    </script>
+  </body>
+</html>

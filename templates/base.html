@@ -1,0 +1,2267 @@
+{% load static tailwind_tags %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en" class="{% if is_dark_theme %} dark {% endif %}">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %} {% endblock title %} | IntroPrepAI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="./static/output.css" />
+  <link rel="stylesheet" href="{% static 'output.css' %}">
+  <link rel="icon" href="{% static 'faviconicon.svg' %}" type="image/x-icon">
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
+  {% tailwind_css %}
+
+
+  <style>
+
+
+
+  
+    /* From Uiverse.io by marsella_3472 */ 
+/*
+More comprehensive version at shenanigans.shoghisimon.ca/collection/css
+ */
+ .glass {
+      backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 1rem;
+    }
+.container23 {
+  position: absolute;
+  inset: 0;
+}
+
+.container23::before {
+  content: "";
+  position: absolute;
+  inset: -145%;
+  rotate: -45deg;
+  background: #000000;
+  background-image: radial-gradient(
+      4px 100px at 0px 235px,
+      rgb(255, 140, 17),
+      #0000
+    ),
+    radial-gradient(4px 100px at 300px 235px, rgb(255, 119, 0), #884e2800),
+    radial-gradient(
+      1.5px 1.5px at 150px 117.5px,
+      rgb(255, 144, 9) 100%,
+      #0000 150%
+    ),
+    radial-gradient(4px 100px at 0px 252px, rgb(156, 14, 137), #0000),
+    radial-gradient(4px 100px at 300px 252px, rgb(23, 41, 206), #0000),
+    radial-gradient(
+      1.5px 1.5px at 150px 126px,
+      rgb(247, 102, 18) 100%,
+      #0000 150%
+    ),
+    radial-gradient(4px 100px at 0px 150px, rgb(249, 121, 16), #0000),
+    radial-gradient(4px 100px at 300px 150px, rgb(255, 128, 18), #0000),
+    radial-gradient(
+      1.5px 1.5px at 150px 75px,
+      rgb(255, 116, 10) 100%,
+      #0000 150%
+    ),
+    radial-gradient(4px 100px at 0px 253px, rgb(249, 137, 17), #0000),
+    radial-gradient(4px 100px at 300px 253px, rgb(248, 107, 14), #0000),
+    radial-gradient(
+      1.5px 1.5px at 150px 126.5px,
+      rgb(252, 129, 14) 100%,
+      #0000 150%
+    ),
+    radial-gradient(4px 100px at 0px 204px, rgb(234, 115, 18), #0000),
+    radial-gradient(4px 100px at 300px 204px, rgb(255, 139, 6), #0000),
+    radial-gradient(
+      1.5px 1.5px at 150px 102px,
+      rgb(255, 128, 9) 100%,
+      #0000 150%
+    ),
+    radial-gradient(4px 100px at 0px 134px, rgb(249, 133, 9), #0000),
+    radial-gradient(4px 100px at 300px 134px, rgb(251, 125, 15), #0000),
+    radial-gradient(
+      1.5px 1.5px at 150px 67px,
+      rgb(255, 146, 13) 100%,
+      #0000 150%
+    ),
+    radial-gradient(4px 100px at 0px 179px, rgb(249, 137, 17), #0000),
+    radial-gradient(4px 100px at 300px 179px, rgb(253, 122, 6), #0000),
+    radial-gradient(
+      1.5px 1.5px at 150px 89.5px,
+      rgb(234, 132, 7) 100%,
+      #0000 150%
+    ),
+    radial-gradient(4px 100px at 0px 299px, rgb(255, 115, 0), #0000),
+    radial-gradient(4px 100px at 300px 299px, rgb(255, 136, 0), #0000),
+    radial-gradient(
+      1.5px 1.5px at 150px 149.5px,
+      rgb(255, 123, 0) 100%,
+      #0000 150%
+    ),
+    radial-gradient(4px 100px at 0px 215px, rgb(255, 145, 0), #0000),
+    radial-gradient(4px 100px at 300px 215px, rgb(255, 132, 0), #0000),
+    radial-gradient(
+      1.5px 1.5px at 150px 107.5px,
+      rgb(255, 136, 0) 100%,
+      #0000 150%
+    ),
+    radial-gradient(4px 100px at 0px 281px, rgb(255, 170, 0), #0000),
+    radial-gradient(4px 100px at 300px 281px, rgb(255, 115, 0), #0000),
+    radial-gradient(
+      1.5px 1.5px at 150px 140.5px,
+      rgb(255, 119, 0) 100%,
+      #0000 150%
+    ),
+    radial-gradient(4px 100px at 0px 158px, rgb(255, 123, 0), #0000),
+    radial-gradient(4px 100px at 300px 158px, rgb(255, 132, 0), #0000),
+    radial-gradient(
+      1.5px 1.5px at 150px 79px,
+      rgb(255, 149, 0) 100%,
+      #0000 150%
+    ),
+    radial-gradient(4px 100px at 0px 210px, rgb(255, 123, 0), #0000),
+    radial-gradient(4px 100px at 300px 210px, rgb(255, 162, 0), #0000),
+    radial-gradient(
+      1.5px 1.5px at 150px 105px,
+      rgb(255, 136, 0) 100%,
+      #0000 150%
+    );
+  background-size:
+    300px 235px,
+    300px 235px,
+    300px 235px,
+    300px 252px,
+    300px 252px,
+    300px 252px,
+    300px 150px,
+    300px 150px,
+    300px 150px,
+    300px 253px,
+    300px 253px,
+    300px 253px,
+    300px 204px,
+    300px 204px,
+    300px 204px,
+    300px 134px,
+    300px 134px,
+    300px 134px,
+    300px 179px,
+    300px 179px,
+    300px 179px,
+    300px 299px,
+    300px 299px,
+    300px 299px,
+    300px 215px,
+    300px 215px,
+    300px 215px,
+    300px 281px,
+    300px 281px,
+    300px 281px,
+    300px 158px,
+    300px 158px,
+    300px 158px,
+    300px 210px,
+    300px 210px,
+    300px 210px;
+  animation: hi 150s linear infinite;
+}
+
+@keyframes hi {
+  0% {
+    background-position:
+      0px 220px,
+      3px 220px,
+      151.5px 337.5px,
+      25px 24px,
+      28px 24px,
+      176.5px 150px,
+      50px 16px,
+      53px 16px,
+      201.5px 91px,
+      75px 224px,
+      78px 224px,
+      226.5px 350.5px,
+      100px 19px,
+      103px 19px,
+      251.5px 121px,
+      125px 120px,
+      128px 120px,
+      276.5px 187px,
+      150px 31px,
+      153px 31px,
+      301.5px 120.5px,
+      175px 235px,
+      178px 235px,
+      326.5px 384.5px,
+      200px 121px,
+      203px 121px,
+      351.5px 228.5px,
+      225px 224px,
+      228px 224px,
+      376.5px 364.5px,
+      250px 26px,
+      253px 26px,
+      401.5px 105px,
+      275px 75px,
+      278px 75px,
+      426.5px 180px;
+  }
+  to {
+    background-position:
+      0px 6800px,
+      3px 6800px,
+      151.5px 6917.5px,
+      25px 13632px,
+      28px 13632px,
+      176.5px 13758px,
+      50px 5416px,
+      53px 5416px,
+      201.5px 5491px,
+      75px 17175px,
+      78px 17175px,
+      226.5px 17301.5px,
+      100px 5119px,
+      103px 5119px,
+      251.5px 5221px,
+      125px 8428px,
+      128px 8428px,
+      276.5px 8495px,
+      150px 9876px,
+      153px 9876px,
+      301.5px 9965.5px,
+      175px 13391px,
+      178px 13391px,
+      326.5px 13540.5px,
+      200px 14741px,
+      203px 14741px,
+      351.5px 14848.5px,
+      225px 18770px,
+      228px 18770px,
+      376.5px 18910.5px,
+      250px 5082px,
+      253px 5082px,
+      401.5px 5161px,
+      275px 6375px,
+      278px 6375px,
+      426.5px 6480px;
+  }
+}
+ 
+    
+ 
+    #typed-text {
+      @apply text-yellow-500;
+    }
+    .typed-cursor {
+      color: #facc15; /* Tailwind yellow-400 */
+    }
+    .typed-cursor--blink {
+      animation: blink 0.7s step-end infinite;
+    }    
+    @keyframes typing {
+      from {
+        width: 0
+      }
+      to {
+        width: 100%
+      }
+    }
+  
+    @keyframes blink {
+      50% {
+        border-color: transparent
+      }
+    }
+  
+    .typing-animation {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 3px solid #000;
+      animation:
+        typing 3.5s steps(40, end),
+        blink 0.75s step-end infinite;
+    }
+    /* From Uiverse.io by wilsondesouza */
+    ul {
+      list-style: none;
+    }
+
+    .example-2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .example-2 .icon-content {
+      margin: 0 10px;
+      position: relative;
+    }
+
+    .example-2 .icon-content .tooltip {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+      padding: 6px 10px;
+      border-radius: 5px;
+      opacity: 0;
+      visibility: hidden;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .example-2 .icon-content:hover .tooltip {
+      opacity: 1;
+      visibility: visible;
+      top: -50px;
+    }
+
+    .example-2 .icon-content a {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      color: #4d4d4d;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .example-2 .icon-content a:hover {
+      box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
+    }
+
+    .example-2 .icon-content a svg {
+      position: relative;
+      z-index: 1;
+      width: 30px;
+      height: 30px;
+    }
+
+    .example-2 .icon-content a:hover {
+      color: white;
+    }
+
+    .example-2 .icon-content a .filled {
+      position: absolute;
+      top: auto;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      background-color: #000;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .example-2 .icon-content a:hover .filled {
+      height: 100%;
+    }
+
+    .example-2 .icon-content a[data-social="linkedin"] .filled,
+    .example-2 .icon-content a[data-social="linkedin"]~.tooltip {
+      background-color: #0274b3;
+    }
+
+    .example-2 .icon-content a[data-social="github"] .filled,
+    .example-2 .icon-content a[data-social="github"]~.tooltip {
+      background-color: #24262a;
+    }
+
+    .example-2 .icon-content a[data-social="instagram"] .filled,
+    .example-2 .icon-content a[data-social="instagram"]~.tooltip {
+      background: linear-gradient(45deg,
+          #405de6,
+          #5b51db,
+          #b33ab4,
+          #c135b4,
+          #e1306c,
+          #fd1f1f);
+    }
+
+    .example-2 .icon-content a[data-social="youtube"] .filled,
+    .example-2 .icon-content a[data-social="youtube"]~.tooltip {
+      background-color: #ff0000;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+
+    .fade-in-up.visible {
+      animation: fadeInUp 1s ease-out forwards;
+    }
+
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0%);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .animate-scroll {
+      animation: scroll 30s linear infinite;
+    }
+
+    /* From Uiverse.io by htwarriors108 */
+    .card {
+      position: relative;
+      width: 190px;
+      height: 254px;
+      color: #fff;
+      transition: 0.5s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-20px);
+    }
+
+    .card::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: linear-gradient(45deg, #ffbc00, #ff0058);
+      border-radius: 1.2em;
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #ffbc00, #ff0058);
+      filter: blur(30px);
+    }
+
+    .card span {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      right: 6px;
+      bottom: 6px;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 2;
+      border-radius: 1em;
+    }
+
+    .card span::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .card .content {
+      position: relative;
+      padding: 10px;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.5em;
+    }
+
+    /* From Uiverse.io by ajxcj */
+    .solar {
+      margin: 250px auto 350px;
+      height: 50px;
+      width: 50px;
+      background: orange;
+      border-radius: 25px;
+      position: relative;
+      -webkit-animation: glow 1.5s linear infinite;
+      -moz-animation: glow 1.5s linear infinite;
+    }
+
+    .solar i {
+      border-radius: 250px;
+      display: block;
+      position: absolute;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-transform-origin: 50% 50%;
+      -moz-transform-origin: 50% 50%;
+    }
+
+    .solar i:before {
+      content: "";
+      border-radius: 25px;
+      background: black;
+      display: block;
+      position: absolute;
+      top: -5px;
+      right: 45%;
+    }
+
+    .solar i.mercury {
+      width: 80px;
+      height: 80px;
+      margin-left: -40px;
+      left: 50%;
+      top: 50%;
+      margin-top: -40px;
+      -webkit-animation: orbit 0.5s linear infinite;
+      -moz-animation: orbit 0.5s linear infinite;
+    }
+
+    .solar i.mercury:before {
+      background: #6f5f5f;
+      height: 7px;
+      width: 7px;
+    }
+
+    .solar i.venus {
+      width: 110px;
+      height: 110px;
+      margin-left: -55px;
+      left: 50%;
+      top: 50%;
+      margin-top: -55px;
+      -webkit-animation: orbit 1s linear infinite;
+      -moz-animation: orbit 1s linear infinite;
+    }
+
+    .solar i.venus:before {
+      background: #e7a71f;
+      height: 10px;
+      width: 10px;
+    }
+
+    .solar i.earth {
+      width: 140px;
+      height: 140px;
+      margin-left: -70px;
+      left: 50%;
+      top: 50%;
+      margin-top: -70px;
+      -webkit-animation: orbit 1.5s linear infinite;
+      -moz-animation: orbit 1.5s linear infinite;
+    }
+
+    .solar i.earth:before {
+      background: #63bee2;
+      height: 10px;
+      width: 10px;
+    }
+
+    .solar i.mars {
+      width: 170px;
+      height: 170px;
+      margin-left: -85px;
+      left: 50%;
+      top: 50%;
+      margin-top: -85px;
+      -webkit-animation: orbit 2s linear infinite;
+      -moz-animation: orbit 2s linear infinite;
+    }
+
+    .solar i.mars:before {
+      background: red;
+      height: 10px;
+      width: 10px;
+    }
+
+    .solar i.belt {
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      border-width: 25px;
+      width: 240px;
+      height: 240px;
+      margin-left: -120px;
+      border-color: rgba(36, 35, 35, 0.21);
+      left: 50%;
+      top: 50%;
+      margin-top: -120px;
+    }
+
+    .solar i.jupiter {
+      width: 260px;
+      height: 260px;
+      margin-left: -130px;
+      left: 50%;
+      top: 50%;
+      margin-top: -130px;
+      -webkit-animation: orbit 2.5s linear infinite;
+      -moz-animation: orbit 2.5s linear infinite;
+    }
+
+    .solar i.jupiter:before {
+      background: #cf9b2b;
+      top: -15px;
+      height: 30px;
+      width: 30px;
+    }
+
+    .solar i.saturn {
+      width: 320px;
+      height: 320px;
+      margin-left: -160px;
+      left: 50%;
+      top: 50%;
+      margin-top: -160px;
+      -webkit-animation: orbit 3s linear infinite;
+      -moz-animation: orbit 3s linear infinite;
+    }
+
+    .solar i.saturn:before {
+      background: #cf7a2b;
+      top: -10px;
+      height: 20px;
+      width: 20px;
+    }
+
+    .solar i.saturn:after {
+      background: #fff;
+      width: 30px;
+      height: 1px;
+      content: "";
+      position: absolute;
+      display: block;
+      background: #fff;
+      width: 30px;
+      height: 1px;
+      content: "";
+      right: 43.5%;
+      -webkit-transform: rotate(20deg);
+      -moz-transform: rotate(20deg);
+    }
+
+    .solar i.uranus {
+      width: 360px;
+      height: 360px;
+      margin-left: -180px;
+      left: 50%;
+      top: 50%;
+      margin-top: -180px;
+      -webkit-animation: orbit 3.5s linear infinite;
+      -moz-animation: orbit 3.5s linear infinite;
+    }
+
+    .solar i.uranus:before {
+      background: #10c593;
+      top: -8px;
+      height: 15px;
+      width: 15px;
+    }
+
+    .solar i.neptune {
+      width: 400px;
+      height: 400px;
+      margin-left: -200px;
+      left: 50%;
+      top: 50%;
+      margin-top: -200px;
+      -webkit-animation: orbit 4s linear infinite;
+      -moz-animation: orbit 4s linear infinite;
+    }
+
+    .solar i.neptune:before {
+      background: #1470e4;
+      top: -8px;
+      height: 15px;
+      width: 15px;
+    }
+
+    @-webkit-keyframes orbit {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+
+      50% {
+        -webkit-transform: rotate(-180deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(-360deg);
+      }
+    }
+
+    @-webkit-keyframes glow {
+      0% {
+        box-shadow: none;
+      }
+
+      50% {
+        background: #ffeb00;
+        box-shadow: 0 0 20px orange;
+      }
+
+      100% {
+        box-shadow: none;
+      }
+    }
+
+    @-moz-keyframes orbit {
+      0% {
+        -moz-transform: rotate(0deg);
+      }
+
+      50% {
+        -moz-transform: rotate(-180deg);
+      }
+
+      100% {
+        -moz-transform: rotate(-360deg);
+      }
+    }
+
+    @-moz-keyframes glow {
+      0% {
+        box-shadow: none;
+      }
+
+      50% {
+        background: #ffeb00;
+        box-shadow: 0 0 20px orange;
+      }
+
+      100% {
+        box-shadow: none;
+      }
+    }
+
+    .cta-left-container {
+      position: relative;
+      width: fit-content;
+      /* Or a fixed width like 400px */
+      height: fit-content;
+    }
+
+    .cta-left-img {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      /* Adjust as needed */
+    }
+
+    .solar {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      /* You can scale it down or adjust position as needed */
+    }
+
+    .container {
+      width: 100%;
+      height: 100%;
+      /* Add your background pattern here */
+      background-color: #ffffff;
+      background-image: radial-gradient(rgba(12, 12, 12, 0.171) 2px, transparent 0);
+      background-size: 30px 30px;
+      background-position: -5px -5px;
+    }
+
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      padding: 12px 16px;
+      z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .custom-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .custom-dropdown2 {
+      position: relative;
+      display: inline-block;
+    }
+
+    .custom-dropdown-content {
+      display: none;
+      position: absolute;
+      left: 0;
+      margin-top: 0.5rem;
+      background-color: white;
+      min-width: 350px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      border-radius: 0.5rem;
+      z-index: 1000;
+      transform: translateY(10px);
+      opacity: 0;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .custom-dropdown2-content {
+      display: none;
+      position: absolute;
+      left: 0;
+      margin-top: 0.5rem;
+      background-color: white;
+      min-width: 350px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      border-radius: 0.5rem;
+      z-index: 1000;
+      transform: translateY(10px);
+      opacity: 0;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .custom-dropdown:hover .custom-dropdown-content {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .custom-dropdown2:hover .custom-dropdown2-content {
+      display: flex; /* or use block */
+      flex-direction: column; /* ensures items stack vertically */
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    /* From Uiverse.io by virus231 */ 
+    /* From Uiverse.io by shah1345 */ 
+.button2 {
+  display: inline-block;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  color: #090909;
+  padding: 0.7em 1.7em;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+}
+
+.button2:active {
+  color: #666;
+  box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+}
+
+.button2:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.button2:after {
+  content: "";
+  position: absolute;
+  left: 55%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.45);
+  top: 180%;
+  width: 160%;
+  height: 190%;
+  background-color: #009087;
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.button2:hover {
+  color: #ffffff;
+  border: 1px solid #009087;
+}
+
+.button2:hover:before {
+  top: -35%;
+  background-color: #009087;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.button2:hover:after {
+  top: -45%;
+  background-color: #009087;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+
+
+  /* From Uiverse.io by fanishah */ 
+.loading-bar {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  background: transparent;
+  border: px solid #3c3c3c;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 111px;
+  font-family: sans-serif;
+  font-size: 15px;
+  color: #fff000;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px #fff000;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.loading-bar:before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 100%;
+  height: 100%;
+  border: 3px solid transparent;
+  border-top: 5px solid #fff000;
+  border-right: 5px solid #fff000;
+  border-radius: 50%;
+  animation: animateC 2s linear infinite;
+}
+
+@keyframes animateC {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(45deg);
+  }
+
+  100% {
+    transform: rotate(405deg);
+  }
+}
+
+}
+
+  
+    
+  </style>
+
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+
+</head>
+
+<body
+  class="bg-white dark:bg-gray-900 text-amber-950 dark:text-gray-50 font-sans antialiased tracking-normal scroll-smooth">
+  
+    {% block content %}
+    {% endblock content %}
+  
+  <div class="bg-white dark:bg-gray-900 text-amber-950 dark:text-gray-50 ">
+    <header class="absolute inset-x-0 top-0 z-50 ">
+      <nav
+        class="flex items-center justify-between p-6 lg:px-8 dark-mode:bg-gray-900 night-mode:bg-yellow-900 shadow-sm w-full"
+        aria-label="Global">
+        <div class="flex lg:flex-1 justify-center lg:justify-start ">
+          <a href="#" class="-m-1.5 p-1.5 flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
+              class="w-8 h-8 text-yellow-500">
+              <path
+                d="M11.7 2.805a.75.75 0 0 1 .6 0A60.65 60.65 0 0 1 22.83 8.72a.75.75 0 0 1-.231 1.337 49.948 49.948 0 0 0-9.902 3.912l-.003.002c-.114.06-.227.119-.34.18a.75.75 0 0 1-.707 0A50.88 50.88 0 0 0 7.5 12.173v-.224c0-.131.067-.248.172-.311a54.615 54.615 0 0 1 4.653-2.52.75.75 0 0 0-.65-1.352 56.123 56.123 0 0 0-4.78 2.589 1.858 1.858 0 0 0-.859 1.228 49.803 49.803 0 0 0-4.634-1.527.75.75 0 0 1-.231-1.337A60.653 60.653 0 0 1 11.7 2.805Z" />
+              <path
+                d="M13.06 15.473a48.45 48.45 0 0 1 7.666-3.282c.134 1.414.22 2.843.255 4.284a.75.75 0 0 1-.46.711 47.87 47.87 0 0 0-8.105 4.342.75.75 0 0 1-.832 0 47.87 47.87 0 0 0-8.104-4.342.75.75 0 0 1-.461-.71c.035-1.442.121-2.87.255-4.286.921.304 1.83.634 2.726.99v1.27a1.5 1.5 0 0 0-.14 2.508c-.09.38-.222.753-.397 1.11.452.213.901.434 1.346.66a6.727 6.727 0 0 0 .551-1.607 1.5 1.5 0 0 0 .14-2.67v-.645a48.549 48.549 0 0 1 3.44 1.667 2.25 2.25 0 0 0 2.12 0Z" />
+              <path
+                d="M4.462 19.462c.42-.419.753-.89 1-1.395.453.214.902.435 1.347.662a6.742 6.742 0 0 1-1.286 1.794.75.75 0 0 1-1.06-1.06Z" />
+            </svg>
+
+          </a>
+
+          <a href="/" class="flex items-center space-x-2 px-2">
+            <span class="font-bold text-3xl text-primary text-cyan-900">Intro<span
+                class="text-blue-500">Prep</span><span class="text-red-500">AI</span></span>
+          </a>
+
+        </div>
+        <div class="flex lg:hidden ml-auto">
+          <button type="button" id="menu-button"
+            class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark-mode:text-white night-mode:text-black">
+            <span class="sr-only">Open main menu</span>
+            <svg class="size-6 " fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true" data-slot="icon">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </button>
+        </div>
+        <div class="hidden lg:flex lg:gap-x-12 text-lg bg-slate-100 rounded-full px-9 py-4">
+
+
+
+          <!-- HTML -->
+          <div class="custom-dropdown">
+            <!-- Trigger Button -->
+            <a href="#features"
+              class="flex items-center gap-1 text-sm font-semibold text-gray-900 hover:text-blue-700 transition duration-200">
+              Features
+              <svg class="w-4 h-4 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06 0L10 10.94l3.71-3.73a.75.75 0 011.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 010-1.06z"
+                  clip-rule="evenodd" />
+              </svg>
+            </a>
+
+            <!-- Dropdown Content -->
+            <div class="custom-dropdown-content gap-4 p-6">
+              <!-- Column 1 -->
+              <a href="#" class="flex items-center gap-2 text-sm text-gray-800 hover:text-blue-600">
+                <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 2a1 1 0 01.894.553l4.5 9A1 1 0 0114.5 13h-9a1 1 0 01-.894-1.447l4.5-9A1 1 0 0110 2z" />
+                </svg>
+                AI Mock Interviews
+              </a>
+              <a href="#" class="flex items-center gap-2 text-sm text-gray-800 hover:text-blue-600">
+                <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M4 3a1 1 0 000 2h12a1 1 0 100-2H4zm1 4a1 1 0 000 2h10a1 1 0 100-2H5zm-1 4a1 1 0 000 2h12a1 1 0 100-2H4zm1 4a1 1 0 000 2h10a1 1 0 100-2H5z" />
+                </svg>
+                Feedback Analysis
+              </a>
+
+              <!-- Column 2 -->
+              <a href="#" class="flex items-center gap-2 text-sm text-gray-800 hover:text-blue-600">
+                <svg class="w-5 h-5 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd"
+                    d="M2 5a2 2 0 012-2h2.586A2 2 0 019 3.586L10.414 5H16a2 2 0 012 2v1.172a2 2 0 01-.586 1.414l-8 8A2 2 0 017 17H4a2 2 0 01-2-2V5z"
+                    clip-rule="evenodd" />
+                </svg>
+                Resume Review
+              </a>
+              <a href="#" class="flex items-center gap-2 text-sm text-gray-800 hover:text-blue-600">
+                <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M10 3a1 1 0 00-.894.553L5.5 11.382A1 1 0 006.382 13h7.236a1 1 0 00.894-1.447l-3.606-7.83A1 1 0 0010 3z" />
+                </svg>
+                Progress Tracking
+              </a>
+            </div>
+          </div>
+
+          <a href="https://akhilesh-kumar-pandey-portfolio.vercel.app/#home"
+            class="relative text-sm/6 font-semibold text-gray-900 dark:text-gray-50 dark-mode:text-white night-mode:text-blue-700 hover:text-blue-700 hover:scale-105 transition-colors duration-300"
+            style="display: inline-block; position: relative;">
+            Developer
+            <span class="absolute left-1/2 bottom-[-2px] w-0 h-[2px] bg-blue-700 transition-all duration-300"
+              style="transition: width 0.3s ease-in-out, left 0.3s ease-in-out;"></span>
+          </a>
+
+          <a href="#contact"
+            class="relative text-sm/6 font-semibold text-gray-900 dark:text-gray-50 dark-mode:text-white night-mode:text-blue-700 hover:text-blue-700 hover:scale-105 transition-colors duration-300"
+            style="display: inline-block; position: relative;">
+            Contact Us
+            <span class="absolute left-1/2 bottom-[-2px] w-0 h-[2px] bg-blue-700 transition-all duration-300"
+              style="transition: width 0.3s ease-in-out, left 0.3s ease-in-out;"></span>
+          </a>
+
+          <a href="/signup"
+            class="text-sm/6 font-mono text-white bg-indigo-500 rounded-full px-5 py-0.5 hover:text-blue-700 hover:scale-105 dark-mode:text-white night-mode:text-blue-700 transition-colors duration-300"
+            style="display: inline-block; position: relative;">
+            Sign Up
+            <span class="absolute left-1/2 bottom-[-2px] w-0 h-[2px] bg-white transition-all duration-300"
+              style="transition: width 0.3s ease-in-out, left 0.3s ease-in-out;"></span>
+          </a>
+
+
+
+
+        </div>
+
+
+        {% comment %}
+        <div class="relative mx-3 ">
+          <a id="theme-toggle" href="{% url 'change-theme' %}"
+            class="p-2 hover:bg-gray-300 rounded-lg duration-300 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-white">
+            {% if is_dark_theme %}
+            <span id="theme-icon">🌞</span> <span id="theme-text"></span>
+            {% else %}
+            <span id="theme-icon">🌙</span> <span id="theme-text"></span>
+            {% endif %}
+
+          </a>
+
+        </div> {% endcomment %}
+
+
+
+        {% comment %} {% endcomment %}
+        <!-- Language Dropdown -->
+        <!-- Language Dropdown -->
+        <div class="relative inline-block">
+          <!-- Dropdown Button -->
+          {% comment %} <button class="text-white bg-blue-500 px-4 py-2 rounded-lg focus:outline-none"
+            id="language-button">
+            🌍 Language
+          </button> {% endcomment %}
+
+          <!-- Dropdown Menu -->
+          <div id="language-dropdown"
+            class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg hidden">
+            <ul class="py-2">
+              {% for lang_code, lang_name in LANGUAGES %}
+              <li>
+                <a href="{% url 'switch_language' %}?lang={{ lang_code }}"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-200">
+                  {{ lang_name }}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        <div class="relative hidden lg:flex lg:flex-1 lg:justify-center">
+          {% if request.user.is_authenticated %}
+          <div class="custom-dropdown2">
+            <button
+            class="flex items-center gap-2 px-4 py-2 text-gray-900 font-semibold bg-white rounded-lg shadow-md hover:bg-gray-200 w-full focus:outline-none">
+            
+            <!-- User Avatar -->
+            {% block profileImage %}{% endblock profileImage %}
+        
+            <span>Welcome, <span class="text-bold text-blue-500">{{ request.user.username|title }}</span></span>
+        
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+            <!-- Dropdown Content -->
+            <div class="custom-dropdown2-content gap-4 p-6">
+              <!-- Column 1 -->
+              <a href="/dashboard" class="flex items-center gap-2 text-sm text-gray-800 hover:text-blue-600">
+                <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 2a1 1 0 01.894.553l4.5 9A1 1 0 0114.5 13h-9a1 1 0 01-.894-1.447l4.5-9A1 1 0 0110 2z" />
+                </svg>
+                Profile
+              </a>
+              <a href="{% url 'password_reset' %}" class="flex items-center gap-2 text-sm text-gray-800 hover:text-blue-600">
+                <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M4 3a1 1 0 000 2h12a1 1 0 100-2H4zm1 4a1 1 0 000 2h10a1 1 0 100-2H5zm-1 4a1 1 0 000 2h12a1 1 0 100-2H4zm1 4a1 1 0 000 2h10a1 1 0 100-2H5z" />
+                </svg>
+                Reset Password
+              </a>
+
+              <!-- Column 2 -->
+              <a href="{% url 'logout' %}" class="flex items-center gap-2 text-sm text-gray-800 hover:text-blue-600">
+                <svg class="w-5 h-5 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd"
+                    d="M2 5a2 2 0 012-2h2.586A2 2 0 019 3.586L10.414 5H16a2 2 0 012 2v1.172a2 2 0 01-.586 1.414l-8 8A2 2 0 017 17H4a2 2 0 01-2-2V5z"
+                    clip-rule="evenodd" />
+                </svg>
+               Logout
+              </a>
+           
+            </div>
+          </div>
+          {% else %}
+          <!-- Login Link -->
+          <a href="{% url 'login' %}" class="button2 block text-sm font-semibold text-gray-900 hover:text-blue-700 mt-4">
+  Log in <span aria-hidden="true">&rarr;</span>
+</a>
+{% endif %}
+
+
+        </div>
+        
+      </nav>
+
+      {% comment %} Success alert {% endcomment %}
+      {% if messages %}
+      {% for message in messages %}
+      <div id="success-alert"
+        class="success-alert relative px-4 py-3 text-green-800 bg-green-100 border border-green-400 rounded-lg"
+        role="alert">
+        <strong class="font-bold">Success!</strong>
+        <span class="block sm:inline">{{message}}</span>
+        <button type="button" class="absolute top-0 bottom-0 right-0 px-4 py-3 text-green-900 hover:text-green-700"
+          onclick="this.parentElement.remove()">
+          &times;
+        </button>
+      </div>
+      {% endfor %}
+      {% endif %}
+
+      <!-- Mobile menu, show/hide based on menu open state. -->
+
+      <div class="lg:hidden" id="mobile-menu" role="dialog" aria-modal="true">
+        <!-- Background backdrop, show/hide based on slide-over state. -->
+        <div class="fixed inset-0 z-50"></div>
+        <div
+          class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <div class="flex items-center justify-between">
+            <a href="#" class="-m-1.5 p-1.5 flex items-center space-x-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
+                class="w-8 h-8 text-yellow-500">
+                <path
+                  d="M11.7 2.805a.75.75 0 0 1 .6 0A60.65 60.65 0 0 1 22.83 8.72a.75.75 0 0 1-.231 1.337 49.948 49.948 0 0 0-9.902 3.912l-.003.002c-.114.06-.227.119-.34.18a.75.75 0 0 1-.707 0A50.88 50.88 0 0 0 7.5 12.173v-.224c0-.131.067-.248.172-.311a54.615 54.615 0 0 1 4.653-2.52.75.75 0 0 0-.65-1.352 56.123 56.123 0 0 0-4.78 2.589 1.858 1.858 0 0 0-.859 1.228 49.803 49.803 0 0 0-4.634-1.527.75.75 0 0 1-.231-1.337A60.653 60.653 0 0 1 11.7 2.805Z" />
+                <path
+                  d="M13.06 15.473a48.45 48.45 0 0 1 7.666-3.282c.134 1.414.22 2.843.255 4.284a.75.75 0 0 1-.46.711 47.87 47.87 0 0 0-8.105 4.342.75.75 0 0 1-.832 0 47.87 47.87 0 0 0-8.104-4.342.75.75 0 0 1-.461-.71c.035-1.442.121-2.87.255-4.286.921.304 1.83.634 2.726.99v1.27a1.5 1.5 0 0 0-.14 2.508c-.09.38-.222.753-.397 1.11.452.213.901.434 1.346.66a6.727 6.727 0 0 0 .551-1.607 1.5 1.5 0 0 0 .14-2.67v-.645a48.549 48.549 0 0 1 3.44 1.667 2.25 2.25 0 0 0 2.12 0Z" />
+                <path
+                  d="M4.462 19.462c.42-.419.753-.89 1-1.395.453.214.902.435 1.347.662a6.742 6.742 0 0 1-1.286 1.794.75.75 0 0 1-1.06-1.06Z" />
+              </svg>
+              <span class="font-bold text-3xl text-primary text-cyan-900">Intro<span
+                  class="text-blue-500">Prep</span><span class="text-red-500">AI</span></span>
+            </a>
+
+            <button type="button" id="close-menu-button" class="-m-2.5 rounded-md p-2.5 px-5 text-gray-700">
+              <span class="sr-only">Close menu</span>
+              <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                aria-hidden="true" data-slot="icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="mt-6 flow-root">
+            <div class="-my-6 divide-y divide-gray-500/10">
+              <div class="space-y-2 py-6">
+                <a href="#features"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-amber-700 hover:bg-gray-50 hover:text-blue-700">Features</a>
+                <a href="https://akhilesh-kumar-pandey-portfolio.vercel.app/#home"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 hover:text-blue-700">Developer</a>
+                <a href="#contact"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 hover:text-blue-700">Contact
+                  Us</a>
+                <a href="/signup"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 hover:text-blue-700">Sign
+                  Up
+                </a>
+
+
+                {% if request.user.is_authenticated %}
+                <div class="custom-dropdown2">
+                  <button
+                  class="flex items-center gap-2 px-4 py-2 text-gray-900 font-semibold bg-white rounded-lg shadow-md hover:bg-gray-200 w-full focus:outline-none">
+                  
+                  <!-- User Avatar -->
+                  {% block profileMobileImage %}{% endblock profileMobileImage %}
+              
+                  <span>Welcome, <span class="text-bold text-blue-500">{{ request.user.username|title }}</span></span>
+              
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                  <!-- Dropdown Content -->
+                  <div class="custom-dropdown2-content gap-4 p-6">
+                    <!-- Column 1 -->
+                    <a href="/dashboard" class="flex items-center gap-2 text-sm text-gray-800 hover:text-blue-600">
+                      <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 2a1 1 0 01.894.553l4.5 9A1 1 0 0114.5 13h-9a1 1 0 01-.894-1.447l4.5-9A1 1 0 0110 2z" />
+                      </svg>
+                      Profile
+                    </a>
+                    <a href="#" class="flex items-center gap-2 text-sm text-gray-800 hover:text-blue-600">
+                      <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          d="M4 3a1 1 0 000 2h12a1 1 0 100-2H4zm1 4a1 1 0 000 2h10a1 1 0 100-2H5zm-1 4a1 1 0 000 2h12a1 1 0 100-2H4zm1 4a1 1 0 000 2h10a1 1 0 100-2H5z" />
+                      </svg>
+                      Settings
+                    </a>
+      
+                    <!-- Column 2 -->
+                    <a href="{% url 'logout' %}" class="flex items-center gap-2 text-sm text-gray-800 hover:text-blue-600">
+                      <svg class="w-5 h-5 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                          d="M2 5a2 2 0 012-2h2.586A2 2 0 019 3.586L10.414 5H16a2 2 0 012 2v1.172a2 2 0 01-.586 1.414l-8 8A2 2 0 017 17H4a2 2 0 01-2-2V5z"
+                          clip-rule="evenodd" />
+                      </svg>
+                     Logout
+                    </a>
+                 
+                  </div>
+                </div>
+                {% else %}
+                <!-- Login Link -->
+                <a href="{% url 'login' %}" class="button2 block text-sm font-semibold text-gray-900 hover:text-blue-700 mt-4">
+        Log in <span aria-hidden="true">&rarr;</span>
+      </a>
+      {% endif %}
+      
+              </div>
+            </div>
+          </div>
+
+    </header>
+  </div>
+  <section class="bg-yellow-50 py-24 sm:py-36 lg:py-48 px-4 sm:px-6" id="herosection">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+  
+      <!-- Left Content -->
+      <div class="text-center md:text-left">
+        {% comment %} <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6">
+          Get Hired Faster <br />
+          <span class="text-yellow-500">With Confidence</span>
+        </h1> {% endcomment %}
+
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6">
+          <span id="typed-text" class="text-yellow-500"></span>
+        </h1>
+        
+
+        
+        <p class="text-base sm:text-lg lg:text-xl text-gray-700 mb-8 max-w-xl mx-auto md:mx-0">
+          Personalized mock interviews, instant feedback, and smart preparation — all in one intelligent platform
+          designed to help you succeed.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+          <button onclick="showLoaderAndRedirect()"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-3 rounded-full font-semibold transition duration-300">
+            START NOW
+          </button>
+          <button onclick="window.location.href='#how'"
+            class="bg-gray-900 hover:bg-yellow-600 text-white px-8 py-3 rounded-full font-semibold transition duration-300">
+            See How It Works
+          </button>
+        </div>
+      </div>
+  
+      <!-- Right 3D Model -->
+      <div class="w-full flex justify-center md:justify-end">
+        <model-viewer
+          src="/static/models/hero.glb"
+          alt="3D AI Interview Model"
+          auto-rotate
+          autoplay
+          depth="1"
+          disable-zoom
+          disable-scroll
+          auto-rotate-delay="1000"
+          camera-controls
+          shadow-intensity="1"
+          ar
+          class="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] max-w-xl rounded-xl"
+        >
+        </model-viewer>
+      </div>
+  
+    </div>
+  </section>
+  {% comment %} loader {% endcomment %}
+ <!-- Full Page Loader (initially hidden) -->
+<div id="page-loader" class="fixed inset-0 bg-white z-50 flex items-center justify-center hidden">
+  <div class="flex flex-col items-center space-y-4">
+    <div class="h-12 w-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+    <p class="text-gray-600 font-semibold text-lg">Loading, please wait...</p>
+  </div>
+</div>
+
+  </div>
+  <section id="features" class="bg-white py-24 px-6">
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">What Makes <span
+          class="text-yellow-500">IntroPrepAI</span> Unique?</h2>
+      <p class="text-gray-600 mb-12 max-w-2xl mx-auto">
+        Explore our AI-driven tools designed to help you crack interviews confidently and professionally.
+      </p>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 text-left">
+
+        <!-- Feature 1 -->
+        <div class="bg-yellow-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up"
+          data-aos-delay="100">
+          <h3 class="font-bold text-lg text-yellow-600 mb-2">AI-Powered Mock Interviews</h3>
+          <p class="text-gray-700">Simulates real-time interview scenarios using NLP to evaluate your performance
+            dynamically.</p>
+        </div>
+        <!-- Feature 2 -->
+        <div class="bg-yellow-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up"
+          data-aos-delay="200">
+          <h3 class="font-bold text-lg text-yellow-600 mb-2">Real-Time Feedback</h3>
+          <p class="text-gray-700">Receive instant analysis and suggestions to improve answers, delivery, and
+            confidence.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="bg-yellow-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up"
+          data-aos-delay="300">
+          <h3 class="font-bold text-lg text-yellow-600 mb-2">Speech-to-Text Analysis</h3>
+          <p class="text-gray-700">Accurate voice-to-text conversion helps you improve clarity, pacing, and word choice.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="bg-yellow-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up"
+          data-aos-delay="400">
+          <h3 class="font-bold text-lg text-yellow-600 mb-2">Personality & Tone Detection</h3>
+          <p class="text-gray-700">Our AI analyzes tone, emotion, and confidence levels for soft-skill improvement.</p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="bg-yellow-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up"
+          data-aos-delay="500">
+          <h3 class="font-bold text-lg text-yellow-600 mb-2">Custom Question Sets</h3>
+          <p class="text-gray-700">Choose your domain, job level, and difficulty to tailor the interview experience.</p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="bg-yellow-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up"
+          data-aos-delay="600">
+          <h3 class="font-bold text-lg text-yellow-600 mb-2">Confidence Scoring</h3>
+          <p class="text-gray-700">Visualize your growth with AI-generated confidence and skill metrics after each
+            round.</p>
+        </div>
+
+        <!-- Feature 7 -->
+        <div class="bg-yellow-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up"
+          data-aos-delay="700">
+          <h3 class="font-bold text-lg text-yellow-600 mb-2">Progress Dashboard</h3>
+          <p class="text-gray-700">Get detailed reports and track your performance over time with clear visual charts.
+          </p>
+        </div>
+
+        <!-- Feature 8 -->
+        <div class="bg-yellow-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up"
+          data-aos-delay="800">
+          <h3 class="font-bold text-lg text-yellow-600 mb-2">Hybrid Interviewing</h3>
+          <p class="text-gray-700">Our system integrates text-based interviews, voice-to
+            text transcription, and video analysis for a comprehensive evaluation of candidate
+            performance.</p>
+        </div>
+        <!-- Feature 9 -->
+        <div class="bg-yellow-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up"
+          data-aos-delay="800">
+          <h3 class="font-bold text-lg text-yellow-600 mb-2">Questioning Based On Context</h3>
+          <p class="text-gray-700">Our AI
+            dynamically adapts interview questions based on candidate responses to ensure
+            more personalized and accurate candidate assessments..</p>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+
+  <section id="how" class="bg-yellow-50 py-24 px-6 container font-sans">
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">How It <span class="text-blue-700">Works</span></h2>
+      <p class="text-gray-600 mb-12 max-w-2xl mx-auto">
+        In just a few easy steps, you’ll be on your way to mastering interviews with AI-backed precision.
+      </p>
+  
+      <div class="grid md:grid-cols-4 gap-10 text-left">
+  
+        <!-- Step 1 -->
+        <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center">
+          <div class="text-4xl mb-4 text-yellow-500">📝</div>
+          <h3 class="font-bold text-lg mb-2">Step 1: Sign Up</h3>
+          <p class="text-gray-700 text-sm">Create your account and access personalized interview preparation tools.</p>
+        </div>
+  
+        <!-- Step 2 -->
+        <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center">
+          <div class="text-4xl mb-4 text-yellow-500">🎯</div>
+          <h3 class="font-bold text-lg mb-2">Step 2: Choose Domain</h3>
+          <p class="text-gray-700 text-sm">Select job role, domain, and difficulty to match your career goals.</p>
+        </div>
+  
+        <!-- Step 3 -->
+        <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center">
+          <div class="text-4xl mb-4 text-yellow-500">🤖</div>
+          <h3 class="font-bold text-lg mb-2">Step 3: Start Interview</h3>
+          <p class="text-gray-700 text-sm">Answer AI-generated questions in real-time with speech or text.</p>
+        </div>
+  
+        <!-- Step 4 -->
+        <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center">
+          <div class="text-4xl mb-4 text-yellow-500">📊</div>
+          <h3 class="font-bold text-lg mb-2">Step 4: Get Feedback</h3>
+          <p class="text-gray-700 text-sm">Receive detailed feedback on tone, clarity, and confidence instantly.</p>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+
+
+  <section class="relative bg-gradient-to-r from-yellow-500 to-yellow-400 py-24 px-6 text-white text-center rounded-t-3xl overflow-hidden">
+
+    <!-- Background Blob Illustration -->
+    <div class="absolute inset-0 z-0">
+      <img src="/static/images/3.png" alt="AI pattern" class="w-full h-full object-cover opacity-5" />
+    </div>
+  
+    <div class="relative z-10 max-w-4xl mx-auto">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4 flex justify-center items-center gap-2">
+        🤖 Ready to Transform Your Interview Skills?
+      </h2>
+      <p class="text-lg mb-8">
+        Let IntroPrepAI guide you with smart feedback, mock interviews, and a confidence boost — all powered by AI.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="/login" class="bg-white text-yellow-600 font-semibold px-6 py-3 rounded-full hover:bg-yellow-100 transition animate-bounce">
+          Start Practicing
+        </a>
+        <a href="#features" class="border border-white text-white px-6 py-3 rounded-full hover:bg-white hover:text-yellow-600 transition">
+          Learn More
+        </a>
+      </div>
+    </div>
+  </section>
+  {% block body %}{% endblock body %}
+ 
+
+  {% comment %} <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 container">
+    <!-- Featured Card -->
+    <div class="flex flex-col lg:flex-row gap-6">
+      <img src="/static/images/3.png" alt="Main" class="rounded-xl w-full lg:w-1/2 object-cover max-h-[400px]">
+
+      <div class="flex flex-col justify-between w-full">
+        <div>
+          <h2 class="text-3xl font-bold mb-4">Essential Travel Tips For Seamless Journeys</h2>
+          <p class="text-xl font-semibold text-yellow-600">$97<span
+              class="text-sm font-normal text-gray-500">/USD</span></p>
+          <p class="text-sm text-gray-500 mt-2">Rome</p>
+          <p class="text-gray-700 mt-4">
+            Traveling can be an enriching and stress-free experience with proper planning. Start by ensuring you
+            research your destination, understand local customs, and pack smart.
+          </p>
+        </div>
+        <a href="#" class="mt-4 text-yellow-600 hover:underline font-medium">Read More →</a>
+      </div>
+    </div>
+
+    <!-- Other Cards -->
+    <div class="grid sm:grid-cols-2 gap-6">
+      <!-- Card 1 -->
+      <div>
+        <img src="/static/images/3.png" class="rounded-xl mb-3 w-full h-48 object-cover" />
+        <p class="text-yellow-600 font-semibold">$97<span class="text-sm text-gray-500">/USD</span></p>
+        <p class="text-sm text-gray-500">Paris</p>
+        <h3 class="text-lg font-semibold mt-1">Experience Local Cultures</h3>
+        <p class="text-sm text-gray-600 mt-1">
+          Immersing yourself in different cultures enhances your travel experience.
+        </p>
+        <a href="#" class="mt-2 block text-yellow-600 hover:underline text-sm">Read More →</a>
+      </div>
+
+      <!-- Card 2 -->
+      <div>
+        <img src="/static/images/3.png" class="rounded-xl mb-3 w-full h-48 object-cover" />
+        <p class="text-yellow-600 font-semibold">$84<span class="text-sm text-gray-500">/USD</span></p>
+        <p class="text-sm text-gray-500">Seoul</p>
+        <h3 class="text-lg font-semibold mt-1">Seek Thrilling Experiences</h3>
+        <p class="text-sm text-gray-600 mt-1">
+          Discover hidden gems beyond tourist hotspots for unforgettable moments.
+        </p>
+        <a href="#" class="mt-2 block text-yellow-600 hover:underline text-sm">Read More →</a>
+      </div>
+
+      <!-- Card 3 -->
+      <div>
+        <img src="/static/images/3.png" class="rounded-xl mb-3 w-full h-48 object-cover" />
+        <p class="text-yellow-600 font-semibold">$98<span class="text-sm text-gray-500">/USD</span></p>
+        <p class="text-sm text-gray-500">London</p>
+        <h3 class="text-lg font-semibold mt-1">Travel Sustainably Responsibly</h3>
+        <p class="text-sm text-gray-600 mt-1">
+          Explore with eco-responsibility, reduce waste and carbon footprint.
+        </p>
+        <a href="#" class="mt-2 block text-yellow-600 hover:underline text-sm">Read More →</a>
+      </div>
+
+      <!-- Card 4 -->
+      <div>
+        <img src="/static/images/3.png" class="rounded-xl mb-3 w-full h-48 object-cover" />
+        <p class="text-yellow-600 font-semibold">$76<span class="text-sm text-gray-500">/USD</span></p>
+        <p class="text-sm text-gray-500">Paris</p>
+        <h3 class="text-lg font-semibold mt-1">Embrace New Adventures</h3>
+        <p class="text-sm text-gray-600 mt-1">
+          Allow yourself to embrace endless personal and outdoor possibilities.
+        </p>
+        <a href="#" class="mt-2 block text-yellow-600 hover:underline text-sm">Read More →</a>
+      </div>
+    </div>
+  </div> {% endcomment %}
+
+  {% comment %} <section class="bg-gray-50 py-16 px-6">
+    <div class="max-w-7xl mx-auto text-center mb-12">
+      <h2 class="text-3xl font-semibold text-gray-900">What Our Travelers Say</h2>
+      <p class="text-gray-600 mt-2">Real experiences from real adventurers around the world.</p>
+    </div>
+
+    <div class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
+
+      <!-- Testimonial Card 1 -->
+      <div class="bg-white shadow-md rounded-lg p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Profile"
+            class="w-14 h-14 rounded-full object-cover">
+          <div>
+            <h4 class="font-semibold text-lg">Emily Parker</h4>
+            <p class="text-sm text-gray-500">Solo Traveler</p>
+          </div>
+        </div>
+        <p class="text-gray-700">
+          "The trip was absolutely amazing! The planning and recommendations made everything stress-free and exciting."
+        </p>
+      </div>
+
+      <!-- Testimonial Card 2 -->
+      <div class="bg-white shadow-md rounded-lg p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Profile"
+            class="w-14 h-14 rounded-full object-cover">
+          <div>
+            <h4 class="font-semibold text-lg">John Miller</h4>
+            <p class="text-sm text-gray-500">Backpacker</p>
+          </div>
+        </div>
+        <p class="text-gray-700">
+          "Highly recommend this platform to anyone looking to travel smart and explore hidden gems!"
+        </p>
+      </div>
+
+      <!-- Testimonial Card 3 -->
+      <div class="bg-white shadow-md rounded-lg p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile"
+            class="w-14 h-14 rounded-full object-cover">
+          <div>
+            <h4 class="font-semibold text-lg">Sara Johnson</h4>
+            <p class="text-sm text-gray-500">Adventure Enthusiast</p>
+          </div>
+        </div>
+        <p class="text-gray-700">
+          "From start to finish, everything was smooth and personalized. Can't wait for my next trip!"
+        </p>
+      </div>
+      <div class="bg-white shadow-md rounded-lg p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile"
+            class="w-14 h-14 rounded-full object-cover">
+          <div>
+            <h4 class="font-semibold text-lg">Sara Johnson</h4>
+            <p class="text-sm text-gray-500">Adventure Enthusiast</p>
+          </div>
+        </div>
+        <p class="text-gray-700">
+          "From start to finish, everything was smooth and personalized. Can't wait for my next trip!"
+        </p>
+      </div>
+      <div class="bg-white shadow-md rounded-lg p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="https://randomuser.me/api/portraits/women/44." alt="Profile"
+            class="w-14 h-14 rounded-full object-cover">
+          <div>jpg
+            <h4 class="font-semibold text-lg">Sara Johnson</h4>
+            <p class="text-sm text-gray-500">Adventure Enthusiast</p>
+          </div>
+        </div>
+        <p class="text-gray-700">
+          "From start to finish, everything was smooth and personalized. Can't wait for my next trip!"
+        </p>
+      </div>
+      <div class="bg-white shadow-md rounded-lg p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile"
+            class="w-14 h-14 rounded-full object-cover">
+          <div>
+            <h4 class="font-semibold text-lg">Sara Johnson</h4>
+            <p class="text-sm text-gray-500">Adventure Enthusiast</p>
+          </div>
+        </div>
+        <p class="text-gray-700">
+          "From start to finish, everything was smooth and personalized. Can't wait for my next trip!"
+        </p>
+      </div>
+
+    </div>
+  </section> {% endcomment %}
+  <section class="bg-gray-900 text-white py-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-yellow-400">Frequently Asked Questions</h2>
+  
+      <div class="space-y-4">
+  
+        <!-- FAQ ITEM -->
+        <div x-data="{ open: false }" class="bg-gray-800 rounded-xl p-5 shadow-md">
+          <button @click="open = !open" class="flex justify-between items-center w-full">
+            <h3 class="font-semibold text-lg text-white">❓ What is IntroPrepAI?</h3>
+            <svg :class="open ? 'rotate-180' : ''" class="h-5 w-5 text-yellow-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div x-show="open" x-transition class="mt-3 text-gray-300">
+            IntroPrepAI is an AI-powered mock interview platform that helps you practice, improve, and track your performance through real-time feedback.
+          </div>
+        </div>
+  
+        <!-- FAQ ITEM -->
+        <div x-data="{ open: false }" class="bg-gray-800 rounded-xl p-5 shadow-md">
+          <button @click="open = !open" class="flex justify-between items-center w-full">
+            <h3 class="font-semibold text-lg text-white">❓ Is this free to use?</h3>
+            <svg :class="open ? 'rotate-180' : ''" class="h-5 w-5 text-yellow-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div x-show="open" x-transition class="mt-3 text-gray-300">
+            Yes, you can use IntroPrepAI completely free while we’re in beta. Premium features may be added later.
+          </div>
+        </div>
+  
+        <!-- FAQ ITEM -->
+        <div x-data="{ open: false }" class="bg-gray-800 rounded-xl p-5 shadow-md">
+          <button @click="open = !open" class="flex justify-between items-center w-full">
+            <h3 class="font-semibold text-lg text-white">❓ Do I need a mic or camera?</h3>
+            <svg :class="open ? 'rotate-180' : ''" class="h-5 w-5 text-yellow-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div x-show="open" x-transition class="mt-3 text-gray-300">
+            You don’t need a camera, but using a mic improves speech analysis and helps assess your tone and clarity.
+          </div>
+        </div>
+  
+        <!-- FAQ ITEM -->
+        <div x-data="{ open: false }" class="bg-gray-800 rounded-xl p-5 shadow-md">
+          <button @click="open = !open" class="flex justify-between items-center w-full">
+            <h3 class="font-semibold text-lg text-white">❓ Can I choose my own questions or topics?</h3>
+            <svg :class="open ? 'rotate-180' : ''" class="h-5 w-5 text-yellow-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div x-show="open" x-transition class="mt-3 text-gray-300">
+            Yes! You can customize your mock sessions by selecting job role, difficulty level, and question type.
+          </div>
+        </div>
+  
+        <!-- FAQ ITEM -->
+        <div x-data="{ open: false }" class="bg-gray-800 rounded-xl p-5 shadow-md">
+          <button @click="open = !open" class="flex justify-between items-center w-full">
+            <h3 class="font-semibold text-lg text-white">❓ How does the AI give feedback?</h3>
+            <svg :class="open ? 'rotate-180' : ''" class="h-5 w-5 text-yellow-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div x-show="open" x-transition class="mt-3 text-gray-300">
+            The system uses NLP and voice analysis to assess your delivery, tone, pace, and clarity, providing you with smart feedback in real-time.
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+
+  <div class="max-w-6xl mx-auto my-16 px-4 grid md:grid-cols-2 gap-8" id="contact">
+
+    <!-- Left Form Section -->
+    <div class="bg-yellow-400 rounded-xl p-8 flex flex-col justify-center h-full">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+        Encourage visitor to <span class="font-extrabold">complete your CTA</span>
+      </h2>
+
+      <form class="bg-white rounded-xl p-6 space-y-4" action="/contact" method="POST">
+        {% csrf_token %}
+        <div>
+          <label class="block font-medium mb-1">First Name</label>
+          <input type="text" placeholder="Enter your full name" name="first_name"
+            class="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+        </div>
+        <div>
+          <label class="block font-medium mb-1">Last Name</label>
+          <input type="text" placeholder="Enter your full name" name="last_name" id="last_name"
+            class="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+        </div>
+
+        <div>
+          <label class="block font-medium mb-1">Email</label>
+          <input type="email" placeholder="you@example.com" name="email"
+            class="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+        </div>
+
+        <div>
+          <label class="block font-medium mb-1">Phone</label>
+          <input type="tel" placeholder="+123 456 7890" name="phone"
+            class="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+        </div>
+
+        <div>
+          <label class="block font-medium mb-1">Message</label>
+          <textarea placeholder="Write your message..." name="message" rows="3"
+            class="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
+        </div>
+
+        <div class="flex items-start">
+          <input type="checkbox" class="mt-1" id="agree">
+          <label for="agree" class="ml-2 text-sm">I agree to receive commercial information</label>
+        </div>
+
+        <button type="submit"
+          class="w-full bg-yellow-500 text-black font-semibold py-2 rounded-md hover:bg-yellow-600 transition">SUBMIT</button>
+      </form>
+    </div>
+
+    <!-- Right Image Section -->
+    <div class="relative w-full flex justify-center md:justify-end bg-gray-900 rounded-xl overflow-hidden max-w-5xl mx-auto">
+  
+      <!-- Animated Background Only Behind Model -->
+      <div class="absolute inset-0 z-0 container23 pointer-events-none"></div>
+    
+      <!-- 3D Model Viewer -->
+      <model-viewer
+        src="/static/models/robot.glb"
+        alt="3D AI Interview Model"
+        autoplay
+        auto-rotate
+        camera-controls
+        shadow-intensity="1"
+        depth="1"
+        disable-zoom
+        ar
+        disable-scroll
+        auto-rotate-delay="1000"
+        style="--poster-color: #000000; --poster-opacity: 0.5;"
+        ar-modes="webxr scene-viewer quick-look"
+        ar-scale="auto"
+        class="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] max-w-xl rounded-xl z-10"
+      >
+      </model-viewer>
+    
+    </div>
+    
+
+  </div>
+
+
+
+
+
+  
+
+
+  <!-- Floating Chatbot Button -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <button id="chatbot-toggle"
+      class="h-16 w-16 sm:h-12 sm:w-12 rounded-full shadow-lg bg-blue-500 flex items-center justify-center">
+      <img src="{% static 'images/chatbotimg.png' %}" alt="Chat" class="h-10 w-10 sm:h-8 sm:w-8 rounded-full">
+    </button>
+  </div>
+
+  <!-- Floating Chatbot UI -->
+  <div id="chatbot-container"
+    class="fixed bottom-20 right-6 w-80 sm:w-64 h-96 sm:h-80 bg-white shadow-lg rounded-lg hidden transition-all transform translate-y-10 opacity-0 flex flex-col">
+    <div class="bg-blue-600 text-white p-3 rounded-t-lg flex justify-between">
+      <span>Chatbot</span>
+      <button id="chatbot-close" class="text-white">✖</button>
+    </div>
+
+    <!-- Chat Content -->
+    <div id="chat-box" class="p-4 flex-1 overflow-y-auto bg-gray-50 rounded-lg"></div>
+
+    <!-- Input Field -->
+    <div class="flex items-center p-3 space-x-2 border-t">
+      <input type="text" id="user-input" class="flex-1 p-2 border rounded-lg text-sm"
+        placeholder="Type your message...">
+      <button onclick="sendMessage()" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Send</button>
+    </div>
+  </div>
+
+
+
+
+  <div class="bg-gray-900 text-white">
+    <a href="#" onclick="scrollToTop()" id="backToTopBtn"
+      class="fix z-50 bottom-5 right-5 flex items-center justify-center px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 bg-gray-900 duration-3000 ease-in-out">⬆️</a>
+    <p class="text-center text-sm/6 text-gray-400 opacity-35">
+      Scroll To Top
+    </p>
+  </div>
+
+  <footer class="bg-gray-900 text-white py-12 px-6">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-10">
+  
+      <!-- Branding -->
+      <div>
+        <h3 class="text-2xl font-bold text-yellow-400">IntroPrepAI</h3>
+        <p class="mt-3 text-gray-400">AI-Powered Mock Interviews to build your confidence and land your dream job.</p>
+      </div>
+  
+      <!-- Navigation Links -->
+      <div>
+        <h4 class="font-semibold text-white mb-4">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="#home" class="text-gray-400 hover:text-yellow-400 transition">Home</a></li>
+          <li><a href="#features" class="text-gray-400 hover:text-yellow-400 transition">Features</a></li>
+          <li><a href="#how" class="text-gray-400 hover:text-yellow-400 transition">How It Works</a></li>
+          <li><a href="#testimonials" class="text-gray-400 hover:text-yellow-400 transition">Testimonials</a></li>
+          <li><a href="#contact" class="text-gray-400 hover:text-yellow-400 transition">Contact</a></li>
+        </ul>
+      </div>
+  
+      <!-- Social & Contact -->
+      <div>
+        <h4 class="font-semibold text-white mb-4">Stay Connected</h4>
+        <div class="flex space-x-4">
+          <a href="https://www.linkedin.com/in/akhilesh-kumar-pandey-52b254258/" class="text-gray-400 hover:text-yellow-400 transition" aria-label="LinkedIn">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 24h5V7H0v17zM8 7v17h5v-9.5c0-2.21 2.72-2.4 2.72 0V24H21v-10c0-6.3-7-6-8.55-2.9V7H8z"/></svg>
+          </a>
+          <a href="https://github.com/Akhileshpandey21" class="text-gray-400 hover:text-yellow-400 transition" aria-label="GitHub">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0a12 12 0 0 0-3.8 23.4c.6.1.8-.2.8-.5v-2c-3.3.7-4-1.6-4-1.6a3.1 3.1 0 0 0-1.3-1.7c-1-.7.1-.7.1-.7a2.5 2.5 0 0 1 1.8 1.2 2.5 2.5 0 0 0 3.4 1 2.5 2.5 0 0 1 .7-1.6C6.7 18.4 4 17.3 4 12.4a4.8 4.8 0 0 1 1.3-3.3 4.5 4.5 0 0 1 .1-3.2s1-.3 3.4 1.3a11.7 11.7 0 0 1 6.2 0c2.4-1.6 3.4-1.3 3.4-1.3a4.5 4.5 0 0 1 .1 3.2 4.8 4.8 0 0 1 1.3 3.3c0 4.9-2.7 6-5.3 6.3a2.9 2.9 0 0 1 .8 2.2v3.3c0 .3.2.6.8.5A12 12 0 0 0 12 0z"/></svg>
+          </a>
+          <a href="mailto:akhileshpandey878889@gmail.com" class="text-gray-400 hover:text-yellow-400 transition" aria-label="Email">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 12.713L.985 4.545A1 1 0 0 1 1.485 3h21.03a1 1 0 0 1 .5 1.545L12 12.713zM12 15.287l11.015-8.168a1 1 0 0 1 1.5.857v13.015A1 1 0 0 1 23.015 23H.985A1 1 0 0 1 0 21.991V8.976a1 1 0 0 1 1.5-.857L12 15.287z"/></svg>
+          </a>
+        </div>
+      </div>
+  
+    </div>
+  
+    <div class="text-center mt-10 text-gray-500 text-sm">
+      © 2025 IntroPrepAI. All rights reserved.
+    </div>
+  </footer>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      new Typed("#typed-text", {
+        strings: [
+          "Get Hired Faster With Confidence",
+          "Ace Every Interview With AI Help",
+          "Practice. Improve. Succeed.",
+          "Mock Interviews That Feel Real"
+        ],
+        typeSpeed: 50,
+        backSpeed: 25,
+        backDelay: 2000,
+        startDelay: 500,
+        loop: true,
+        smartBackspace: true,
+        showCursor: true,
+        cursorChar: "|",
+      });
+    });
+  </script>
+  <script>
+    function showLoaderAndRedirect() {
+      document.getElementById("page-loader").classList.remove("hidden");
+      
+      // Simulate delay before navigating
+      setTimeout(() => {
+        window.location.href = "/form"; // Replace with your destination
+      }, 500); // Delay for visual effect
+    }
+  </script>
+  
+  
+  {% comment %} {% endcomment %}
+   <!-- Import the component -->
+   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+
+<!-- JS Script -->
+<script>
+  function toggleReviewForm() {
+    const form = document.getElementById("reviewForm");
+    form.classList.toggle("hidden");
+  }
+</script>
+<script>
+  // If message box exists, hide the form after 1 second
+  window.addEventListener("DOMContentLoaded", () => {
+    const message = document.getElementById("messageBox");
+    const form = document.getElementById("reviewForm");
+
+    if (message && form) {
+      setTimeout(() => {
+        form.classList.add("hidden");
+      }, 1000);
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const reviewed = urlParams.get("reviewed");
+    const form = document.getElementById("reviewForm");
+    const message = document.getElementById("messageBox");
+
+    // Auto-scroll to testimonials
+    if (reviewed === "true") {
+      const section = document.getElementById("testimonials");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      // Hide the form after 1s
+      if (form && message) {
+        setTimeout(() => {
+          form.classList.add("hidden");
+        }, 1000);
+      }
+
+      // Optional: remove the query param from URL without reloading
+      const url = new URL(window.location);
+      url.searchParams.delete("reviewed");
+      window.history.replaceState({}, document.title, url.pathname + url.hash);
+    }
+  });
+</script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const chatbotToggle = document.getElementById("chatbot-toggle");
+      const chatbotContainer = document.getElementById("chatbot-container");
+      const chatbotClose = document.getElementById("chatbot-close");
+      const userInput = document.getElementById("user-input");
+      const chatBox = document.getElementById("chat-box");
+
+      // Toggle Chatbot UI
+      chatbotToggle.addEventListener("click", function () {
+        chatbotContainer.classList.toggle("hidden");
+        setTimeout(() => {
+          chatbotContainer.classList.toggle("translate-y-10");
+          chatbotContainer.classList.toggle("opacity-0");
+        }, 50);
+      });
+
+      // Close Chatbot
+      chatbotClose.addEventListener("click", function () {
+        chatbotContainer.classList.add("opacity-0", "translate-y-10");
+        setTimeout(() => chatbotContainer.classList.add("hidden"), 300);
+      });
+
+      // Load Chat History
+      function loadChatHistory() {
+        fetch('/chatbot/history/', {
+          headers: { 'X-CSRFToken': getCookie('csrftoken') }
+        })
+          .then(response => response.json())
+          .then(data => {
+            chatBox.innerHTML = "";
+            data.history.forEach(chat => {
+              chatBox.innerHTML += `<div class="text-right mb-2">
+                            <span class="bg-blue-500 text-white p-2 rounded-lg inline-block">${chat.user_message}</span>
+                        </div>`;
+              chatBox.innerHTML += `<div class="text-left mb-2">
+                            <span class="bg-gray-300 p-2 rounded-lg inline-block">${chat.bot_response}</span>
+                        </div>`;
+            });
+          });
+      }
+
+      // Send Message
+      function sendMessage() {
+        let userMessage = userInput.value.trim();
+        if (userMessage === "") return;
+
+        chatBox.innerHTML += `<div class="text-right mb-2">
+                    <span class="bg-blue-500 text-white p-2 rounded-lg inline-block">${userMessage}</span>
+                </div>`;
+
+        userInput.value = ""; // Clear input
+
+        fetch("/chatbot/api/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ message: userMessage })
+        })
+          .then(response => response.json())
+          .then(data => {
+            chatBox.innerHTML += `<div class="text-left mb-2">
+                        <span class="bg-gray-300 p-2 rounded-lg inline-block">${data.response}</span>
+                    </div>`;
+            chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll
+          })
+          .catch(error => console.error("Error:", error));
+      }
+
+      // Pressing Enter sends the message
+      userInput.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          sendMessage();
+        }
+      });
+
+      // Get CSRF Token
+      function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+          let cookies = document.cookie.split(';');
+          for (let i = 0; i < cookies.length; i++) {
+            let cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+
+      // Load chat history on page load
+      loadChatHistory();
+    });
+  </script>
+
+
+
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const dropdownBtn = document.getElementById("mobileUserDropdownBtn");
+      const dropdownMenu = document.getElementById("mobileUserDropdownMenu");
+
+      if (dropdownBtn && dropdownMenu) {
+          dropdownBtn.addEventListener("click", function (event) {
+              event.stopPropagation(); // Prevents click from propagating and closing the menu
+              dropdownMenu.classList.toggle("hidden");
+          });
+
+          // Close dropdown when clicking outside
+          document.addEventListener("click", function (event) {
+              if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                  dropdownMenu.classList.add("hidden");
+              }
+          });
+      }
+  });
+  document.addEventListener("DOMContentLoaded", function () {
+      const dropdownBtn = document.getElementById("mobileUserDropdownBtn");
+      const dropdownMenu = document.getElementById("mobileUserDropdownMenu");
+  
+      if (dropdownBtn && dropdownMenu) {
+          dropdownBtn.addEventListener("click", function (event) {
+              event.stopPropagation(); // Prevents click from propagating and closing the menu
+              dropdownMenu.classList.toggle("hidden");
+          });
+  
+          // Close dropdown when clicking outside
+          document.addEventListener("click", function (event) {
+              if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                  dropdownMenu.classList.add("hidden");
+              }
+          });
+      }
+  });
+</script>  
+
+  {% comment %} {% endcomment %}
+  <script src="/static/scripts.js"></script>
+  <script src="/static/scripts.js?v=1.0"></script>
+
+  {% comment %}
+  <script src="/static/scripts.js"></script>
+  {% endcomment %}
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+
+
+  <!-- JavaScript to Toggle Dropdown -->
+  <script>
+    document.getElementById("language-button").addEventListener("click", function () {
+      var dropdown = document.getElementById("language-dropdown");
+      dropdown.classList.toggle("hidden");
+    });
+
+    // Close dropdown if clicked outside
+    document.addEventListener("click", function (event) {
+      var button = document.getElementById("language-button");
+      var dropdown = document.getElementById("language-dropdown");
+      if (!button.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.classList.add("hidden");
+      }
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target); // Remove this line if you want repeat on scroll
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      document.querySelectorAll(".scroll-element").forEach((el) => {
+        observer.observe(el);
+      });
+    });
+
+
+  </script>
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+  </script>
+
+
+</body>
+
+</html>

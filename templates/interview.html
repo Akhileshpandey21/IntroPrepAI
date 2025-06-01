@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Interviewer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-900 flex items-center justify-center h-screen">
+    <div class="bg-white w-full max-w-2xl h-[90vh] rounded-lg shadow-lg flex flex-col">
+  
+      <!-- Header -->
+      <div class="bg-blue-600 text-white p-4 text-lg font-bold flex items-center">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+          alt="AI Avatar"
+          class="w-10 h-10 rounded-full mr-3"
+        />
+        AI Interviewer
+  
+        <!-- Toggle Switch -->
+        <span class="ml-auto">
+          <p id="live-transcript-chat-mode" class="text-sm mt-2 text-green-300 italic"></p>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" id="modeToggle" class="sr-only peer" />
+            <div
+              class="group peer ring-0 bg-gradient-to-bl from-neutral-800 via-neutral-700 to-neutral-600 rounded-full outline-none duration-1000 after:duration-300 w-24 h-12 shadow-md peer-focus:outline-none after:content-[''] after:rounded-full after:absolute after:[background:#0D2B39] peer-checked:after:rotate-180 after:[background:conic-gradient(from_135deg,_#b2a9a9,_#b2a8a8,_#ffffff,_#d7dbd9_,_#ffffff,_#b2a8a8)] after:outline-none after:h-10 after:w-10 after:top-1 after:left-1 peer-checked:after:translate-x-12 peer-hover:after:scale-95 peer-checked:bg-gradient-to-r peer-checked:from-emerald-500 peer-checked:to-emerald-900"
+            ></div>
+          </label>
+        </span>
+      </div>
+  
+      <!-- Chat Mode -->
+      <div id="chat-mode" class="flex-1 overflow-hidden flex flex-col">
+        <div id="chat-box" class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-100">
+          <p class="text-gray-500 text-center" id="header-text">
+            Starting AI interview...
+          </p>
+        </div>
+  
+        <div class="p-4 border-t flex items-center bg-white">
+          <input
+            type="text"
+            id="answer-input"
+            class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+            placeholder="Type your answer..."
+          />
+          <button
+            onclick="sendAnswer()"
+            class="ml-3 bg-blue-500 text-white px-4 py-2 rounded-lg"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+  
+      <!-- Video Mode -->
+      <div
+        id="video-mode"
+        class="hidden flex-1 p-4 flex-col justify-center items-center bg-black text-white"
+      >
+        <h2 class="text-2xl font-bold mb-4">🎥 Video Interview Mode</h2>
+        <video
+          id="user-video"
+          autoplay
+          muted
+          playsinline
+          class="rounded-lg w-full max-w-md shadow-lg border-4 border-yellow-500 h-64 object-cover"
+        ></video>
+        <p class="mt-4 text-sm text-gray-300" id="mic-status">🎤 AI Interviewer is listening...</p>
+        <p id="live-transcript" class="text-sm mt-2 text-green-300 italic"></p>
+
+      </div>
+    </div>
+  
+    <!-- JavaScript for Mode Toggle & Webcam -->
+    <script>
+      const modeToggle = document.getElementById("modeToggle");
+      const chatMode = document.getElementById("chat-mode");
+      const videoMode = document.getElementById("video-mode");
+      const userVideo = document.getElementById("user-video");
+  
+      modeToggle.addEventListener("change", () => {
+        if (modeToggle.checked) {
+          // Switch to video mode
+          chatMode.classList.add("hidden");
+          videoMode.classList.remove("hidden");
+          document.getElementById("live-transcript-chat-mode").innerText = ""; // Clear chat mode transcript
+          document.getElementById("live-transcript").innerText = ""; // Clear video mode transcript
+          document.getElementById("header-text").innerText = ""; // Clear header text
+          
+          startWebcam();
+          startInterview(); // ✅ Start the interview
+          startVoiceToText(); // ✅ Start recognition
+        } else {
+          // Back to chat mode
+          chatMode.classList.remove("hidden");
+          videoMode.classList.add("hidden");
+          document.getElementById("live-transcript-chat-mode").innerText = ""; // Clear chat mode transcript
+          document.getElementById("live-transcript").innerText = ""; // Clear video mode transcript
+
+          if (recognition) recognition.stop();
+    stopWebcam();
+  }
+        }
+      });
+  
+      function startWebcam() {
+        navigator.mediaDevices
+          .getUserMedia({ video: true, audio: false })
+          .then((stream) => {
+            userVideo.srcObject = stream;
+          })
+          .catch((err) => {
+            alert("Please allow webcam access to continue.");
+            console.error("Webcam error:", err);
+          });
+      }
+  
+      function stopWebcam() {
+        const stream = userVideo.srcObject;
+        if (stream) {
+          const tracks = stream.getTracks();
+          tracks.forEach((track) => track.stop());
+        }
+        userVideo.srcObject = null;
+      }
+    </script>
+ 
+  
+{% comment %} 
+    </div>
+      <!-- Evaluation Result -->
+      <div
+        id="evaluation-result"
+        class="text-center mt-2 font-semibold text-red-500"
+      ></div>
+    </div> {% endcomment %}
+
+    
+
+
+
+    <script>
+      let recognition; // Declare outside for reuse
+      document.getElementById("modeToggle").addEventListener("change", function () {
+        const isVideo = this.checked;
+        const chat = document.getElementById("chat-mode");
+        const video = document.getElementById("video-mode");
+    
+        if (isVideo) {
+          chat.classList.add("hidden");
+          video.classList.remove("hidden");
+          startWebcam(); // ✅ Start webcam when toggled ON
+          startVoiceToText();
+        } else {
+          chat.classList.remove("hidden");
+          video.classList.add("hidden");
+          if (recognition) recognition.stop(); // Stop listening
+          stopWebcam();
+        }
+      });
+
+
+
+
+      {% comment %} vedio interview {% endcomment %}
+      function startWebcam() {
+        const video = document.getElementById("user-video");
+      
+        if (navigator.mediaDevices.getUserMedia) {
+          navigator.mediaDevices
+            .getUserMedia({ video: true, audio: false }) // set audio:true to record voice too
+            .then((stream) => {
+              video.srcObject = stream;
+            })
+            .catch((error) => {
+              console.error("Webcam error:", error);
+              alert("Could not access webcam. Please allow permissions.");
+            });
+        } else {
+          alert("Webcam not supported on this browser.");
+        }
+      }
+
+
+      {% comment %} speak functionality {% endcomment %}
+      function startVoiceToText() {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (!SpeechRecognition) {
+          alert("Speech Recognition not supported in this browser.");
+          return;
+        }
+      
+        recognition = new SpeechRecognition();
+        recognition.lang = "en-US";
+        recognition.interimResults = false;
+        recognition.continuous = false;
+      
+        recognition.onstart = () => {
+          console.log("🎤 Listening...");
+          document.getElementById("mic-status").innerText = "🎤 AI Interviewer is listening...";
+          
+        };
+      
+        recognition.onresult = async (event) => {
+          const transcript = event.results[0][0].transcript;
+          console.log("🗣️ Recognized:", transcript);
+          document.getElementById("answer-input").value = transcript;
+          document.getElementById("live-transcript").innerText = `"${transcript}"`;
+
+      
+          // Automatically submit answer after voice input in video mode
+          await sendAnswer(); 
+      
+          // Restart recognition
+          recognition.start();
+        };
+      
+        recognition.onerror = (e) => {
+          console.error("Speech recognition error", e);
+          recognition.stop();
+          setTimeout(() => recognition.start(), 1000); // Restart on error
+        };
+      
+        recognition.onend = () => {
+          recognition.start(); // Auto restart on end
+          console.log("🎤 Restarting recognition...");
+          document.getElementById("mic-status").innerText = "⏳ Processing...";
+        };
+      
+        recognition.start(); // Initial start
+      }
+      
+      
+      
+    </script>
+    
+    <script>
+      function speak(text) {
+        if (!text || text.includes("***","AI Interviewer")) return; // ✅ Prevent speaking unnecessary text
+    
+        const speech = new SpeechSynthesisUtterance(text);
+        speech.lang = "en-US";
+        window.speechSynthesis.speak(speech);
+      }
+
+      let sessionId = localStorage.getItem("session_id");
+      let jobTitle = localStorage.getItem("job_title");
+      let jobDescription = localStorage.getItem("job_description");
+      let resumeText = localStorage.getItem("resume_text");
+
+      async function startInterview() {
+        if (!sessionId || !jobTitle || !jobDescription || !resumeText) {
+          alert("Session expired. Please re-upload your resume.");
+          window.location.href = "/";
+          return;
+        }
+
+        const response = await fetch("/start_interview/", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            session_id: sessionId,
+            job_title: jobTitle,
+            job_description: jobDescription,
+            candidate_name: "Akhilesh Kumar Pandey",
+            resume_text: resumeText,
+          }),
+        });
+        document.getElementById("header-text").innerText = "";
+
+        const data = await response.json();
+        sessionId = data.session_id;
+        displayMessage("👨‍💻 AI Interviewer: " + data.question, "ai");
+        speak(data.question);
+        startTimer();
+        
+      }
+
+      async function sendAnswer(auto = false) {
+        const input = document.getElementById("answer-input");
+        let answer = input.value.trim().toLowerCase();
+
+        if (auto && !answer) {
+          answer = "(No response given)";  // ✅ Auto-fill blank response when time runs out
+      }
+  
+        if (!answer) return;
+
+        displayMessage("🧑 You: " + answer, "user");
+        input.value = "";
+        // If user says "stop the interview", send request to evaluate
+        if (
+          answer === "stop interview" ||
+          answer === "end interview" ||
+          answer === "finish interview"
+        ) {
+          const response = await fetch("/evaluate_interview/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ session_id: sessionId }),
+          });
+
+          const data = await response.json();
+          displayMessage("📢 Interview Ended: " + data.result, "ai");
+          // Show score before next question
+          document.getElementById(
+            "evaluation-result"
+          ).innerText = `⭐ Score: ${data.result} `;
+
+          clearInterval(timer);
+          localStorage.clear();
+
+          return;
+        }
+
+        // Show AI typing indicator
+        const chatBox = document.getElementById("chat-box");
+        const typingIndicator = document.createElement("p");
+        typingIndicator.id = "typing-indicator";
+        typingIndicator.classList.add("text-gray-500", "italic");
+        typingIndicator.innerText = "AI Interviewer is typing...";
+        chatBox.appendChild(typingIndicator);
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        // Simulate delay
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+
+        // Otherwise, continue asking questions
+        const response = await fetch("/next_question/", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ session_id: sessionId, answer: answer }),
+        });
+
+        // Remove typing indicator
+        document.getElementById("typing-indicator").remove();
+
+        const data = await response.json();
+        displayMessage("👨‍💻 AI Interviewer: " + data.question, "ai");
+        speak(data.question);
+        clearInterval(timer);
+        startTimer();
+      }
+
+      function displayMessage(message, sender) {
+        const chatBox = document.getElementById("chat-box");
+        const msgElement = document.createElement("div");
+
+        if (sender === "ai") {
+          msgElement.classList.add(
+            "bg-gray-300",
+            "p-3",
+            "rounded-lg",
+            "self-start",
+            "max-w-xs"
+          );
+        } else {
+          msgElement.classList.add(
+            "bg-blue-500",
+            "text-white",
+            "p-3",
+            "rounded-lg",
+            "self-end",
+            "max-w-xs",
+            "ml-auto"
+          );
+        }
+
+        msgElement.innerText = message;
+        chatBox.appendChild(msgElement);
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }
+      {% comment %} let timer;
+      function startTimer() {
+        let timeLeft = 30; // 30 seconds per answer
+        document.getElementById(
+          "evaluation-result"
+        ).innerText = `⏳ Time Left: ${timeLeft}s`;
+
+        timer = setInterval(() => {
+          timeLeft--;
+          document.getElementById(
+            "evaluation-result"
+          ).innerText = `⏳ Time Left: ${timeLeft}s`;
+
+          if (timeLeft == 0) {
+            clearInterval(timer);
+            sendAnswer(true); // Auto-send blank answer if time runs out
+          }
+        }, 1000);
+      } {% endcomment %}
+
+      window.onload = startInterview; 
+    </script>
+
+
+    <script>
+      // Check if the user has already uploaded a resume
+      let timer;
+function startTimer(seconds = 60) {
+  clearInterval(timer);
+  let remaining = seconds;
+
+  timer = setInterval(() => {
+    if (remaining <= 0) {
+      clearInterval(timer);
+      sendAnswer(true); // Auto-send if time's up
+    } else {
+      document.getElementById("live-transcript").innerText = `⏱️ Time Left: ${remaining}s`;
+      remaining--;
+    }
+  }, 1000);
+}
+
+
+
+      </script>
+  </body>
+</html>

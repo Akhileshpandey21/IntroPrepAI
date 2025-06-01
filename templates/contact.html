@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}Contact{% endblock title %}
+{% block profileImage %}
+{% if latest_image %}
+<img
+  src="{{ latest_image.image.url }}"
+  alt="{{ latest_image.title }}"
+  class="mt-2 w-10 h-10 object-cover rounded-full"
+/>
+{% else %}
+<p class="text-center text-gray-500">
+  No images uploaded yet.
+</p>
+{% endif %}
+{% endblock profileImage %}
+
+{% block profileMobileImage %}
+{% if latest_image %}
+<img
+  src="{{ latest_image.image.url }}"
+  alt="{{ latest_image.title }}"
+  class="mt-2 w-10 h-10 object-cover rounded-full"
+/>
+{% else %}
+<p class="text-center text-gray-500">
+ {% trans "No images uploaded yet." %}
+</p>
+{% endif %}
+
+{% endblock profileMobileImage %}
+
+
+
+{% block body %}
+
+<div class="bg-gray-900 text-gray-50 p-8 drop-shadow-xl dark:bg-gray-900 dark:text-white">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div>
+    
+
+      <h2 class="text-4xl font-bold mb-4">{% trans "Get in touch" %}</h2>
+      <p class="mb-8 text-xl opacity-75 leading-relaxed"> 
+       {% trans "We would love to hear from you! Fill out the form and we’ll get back to you soon." %}
+      </p>
+
+      <div class="mb-4">
+        <div class="flex items-center mb-2">
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 4h10a2 2 0 012 2v11a2 2 0 01-2 2H7a2 2 0 01-2-2V9a2 2 0 012-2z"></path>
+          </svg>
+          <span class="text-base">{% trans "545 Mavis Island, Chicago, IL 99191" %}</span>
+        </div>
+
+        <div class="flex items-center mb-2">
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10l1.664 1.664a1 1 0 001.415 0L12 5.743l5.921 5.921a1 1 0 001.415 0L21 10m-9 11v-4m0 0H9m3 0h3"></path>
+          </svg>
+          <span class="text-base">{% trans "+1 (555) 234-5678" %}</span>
+        </div>
+
+        <div class="flex items-center">
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H8m0 0l4-4m-4 4l4 4"></path>
+          </svg>
+          <span class="text-base">{% trans "hello@example.com" %}</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <form class="space-y-4" method="POST" action="/contact">
+        {% csrf_token %}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="text" name="first_name" placeholder={% trans "First name" %} required autocomplete="off"
+            class="w-full p-3 text-gray-200 bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+          <input type="text" name="last_name" placeholder={% trans "Last name" %} required autocomplete="off"
+            class="w-full p-3 text-gray-200 bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+
+        <input type="email" name="email" placeholder={% trans "Email Address" %} required autocomplete="off"
+          class="w-full p-3 text-gray-200 bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+        <input type="text" name="phone" placeholder={% trans "Phone number" %} required autocomplete="off"
+          class="w-full p-3 text-gray-200 bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+        <textarea name="message" placeholder={% trans "Message" %} required autocomplete="off"
+          class="w-full p-3 text-gray-200 bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 h-32"></textarea>
+
+        <button type="submit"
+          class="w-full p-3 bg-blue-600 text-white text-xl rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 animate-pulse">
+         {% trans "Send Message" %}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="border-t border-gray-800 w-full"></div>
+
+{% endblock %}

@@ -1,0 +1,137 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% tailwind_css %}
+</head>
+<body class="bg-gray-100">
+
+    <!-- Floating Chatbot Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button id="chatbot-toggle" class="h-16 w-16 sm:h-12 sm:w-12 rounded-full shadow-lg bg-blue-500 flex items-center justify-center">
+            <img src="{% static 'images/chatbotimg.png' %}" alt="Chat" class="h-10 w-10 sm:h-8 sm:w-8 rounded-full">
+        </button>
+    </div>
+
+    <!-- Floating Chatbot UI -->
+    <div id="chatbot-container" class="fixed bottom-20 right-6 w-80 sm:w-64 h-96 sm:h-80 bg-white shadow-lg rounded-lg hidden transition-all transform translate-y-10 opacity-0">
+        <div class="bg-blue-600 text-white p-3 rounded-t-lg flex justify-between">
+            <span>Chatbot</span>
+            <button id="chatbot-close" class="text-white">✖</button>
+        </div>
+
+        <!-- Chat Content -->
+        <div id="chat-box" class="p-4 h-64 sm:h-52 overflow-y-auto bg-gray-50 rounded-lg"></div>
+
+        <!-- Input Field -->
+        <div class="flex items-center p-3 space-x-2">
+            <input type="text" id="user-input" class="flex-1 p-2 border rounded-lg text-sm" placeholder="Type your message...">
+            <button onclick="sendMessage()" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Send</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const chatbotToggle = document.getElementById("chatbot-toggle");
+            const chatbotContainer = document.getElementById("chatbot-container");
+            const chatbotClose = document.getElementById("chatbot-close");
+            const userInput = document.getElementById("user-input");
+            const chatBox = document.getElementById("chat-box");
+
+            // Toggle Chatbot UI
+            chatbotToggle.addEventListener("click", function () {
+                chatbotContainer.classList.toggle("hidden");
+                setTimeout(() => {
+                    chatbotContainer.classList.toggle("translate-y-10");
+                    chatbotContainer.classList.toggle("opacity-0");
+                }, 50);
+            });
+
+            // Close Chatbot
+            chatbotClose.addEventListener("click", function () {
+                chatbotContainer.classList.add("opacity-0", "translate-y-10");
+                setTimeout(() => chatbotContainer.classList.add("hidden"), 300);
+            });
+
+            // Load Chat History
+            function loadChatHistory() {
+                fetch('/chatbot/history/', {
+                    headers: { 'X-CSRFToken': getCookie('csrftoken') }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    chatBox.innerHTML = "";
+                    data.history.forEach(chat => {
+                        chatBox.innerHTML += `<div class="text-right mb-2">
+                            <span class="bg-blue-500 text-white p-2 rounded-lg inline-block">${chat.user_message}</span>
+                        </div>`;
+                        chatBox.innerHTML += `<div class="text-left mb-2">
+                            <span class="bg-gray-300 p-2 rounded-lg inline-block">${chat.bot_response}</span>
+                        </div>`;
+                    });
+                });
+            }
+
+            // Send Message
+            function sendMessage() {
+                let userMessage = userInput.value.trim();
+                if (userMessage === "") return;
+
+                chatBox.innerHTML += `<div class="text-right mb-2">
+                    <span class="bg-blue-500 text-white p-2 rounded-lg inline-block">${userMessage}</span>
+                </div>`;
+
+                userInput.value = ""; // Clear input
+
+                fetch("/chatbot/api/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ message: userMessage })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    chatBox.innerHTML += `<div class="text-left mb-2">
+                        <span class="bg-gray-300 p-2 rounded-lg inline-block">${data.response}</span>
+                    </div>`;
+                    chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll
+                })
+                .catch(error => console.error("Error:", error));
+            }
+
+            // Pressing Enter sends the message
+            userInput.addEventListener("keypress", function (event) {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    sendMessage();
+                }
+            });
+
+            // Get CSRF Token
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    let cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        let cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+
+            // Load chat history on page load
+            loadChatHistory();
+        });
+    </script>
+
+</body>
+</html>
