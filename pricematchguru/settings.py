@@ -33,7 +33,7 @@ SECRET_KEY = 'django-insecure-l6hg+$-3h0dp@0#+0+30$f79-o+^9k&(l$z5=ig-lzaav#lw12
 DEBUG = False
 # True
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost","*","introprepai.onrender.com"]
 
 # Whitenoise settings (for better caching)
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
