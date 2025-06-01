@@ -1,0 +1,6 @@
+venv-ai/
+*.pyc
+__pycache__/
+*.pyd
+*.dll
+*.exe
