@@ -4,10 +4,8 @@ import docx2txt
 from django.core.files.storage import default_storage
 
 import cv2
-from fer import FER
+from deepface import DeepFace
 import mediapipe as mp
-import numpy as np
-
 from textblob import TextBlob
 
 def extract_resume_text(resume_path):
@@ -30,21 +28,20 @@ def extract_resume_text(resume_path):
     return text.strip()
 
 
-
-# Initialize emotion detector
-emotion_detector = FER(mtcnn=True)
-
 # Initialize posture detector
 mp_pose = mp.solutions.pose
 pose = mp_pose.Pose()
 
 def analyze_emotion(frame):
-    """Returns top emotion from a face in frame."""
+    """Returns top emotion from a face in frame using DeepFace."""
     try:
-        result = emotion_detector.top_emotion(frame)
-        return result[0] if result else "Neutral"
+        result = DeepFace.analyze(frame, actions=['emotion'], enforce_detection=False)
+        if isinstance(result, list):
+            result = result[0]
+        return result.get("dominant_emotion", "Neutral")
     except Exception:
         return "Neutral"
+
 
 def analyze_posture(frame):
     """Detects if user is slouched or upright."""
@@ -65,7 +62,6 @@ def analyze_posture(frame):
 
     except Exception:
         return "Unknown"
-
 
 
 def analyze_sentiment(text):
