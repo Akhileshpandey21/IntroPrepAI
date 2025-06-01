@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: ai-interviewer
+    env: python
+    region: oregon
+    plan: free
+    runtime: python-3.10
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn ai_interviewer.wsgi --bind 0.0.0.0:$PORT
+    envVars:
+      - key: SECRET_KEY
+        fromService: your-secret-service
+      - key: DEBUG
+        value: "False"
+      - key: DATABASE_URL
+        fromService: your-database-service
+    autoDeploy: true
+    branch: main
